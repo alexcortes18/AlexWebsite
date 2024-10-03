@@ -17,39 +17,32 @@ body {
   align-items: center;
   height: 50px;
 }
-
 .header h1{
   margin: 0;
   flex-grow: 1;
   font-size: 40px;
   margin-left: 20px;
 }
-
-.nav-links{
+.nav-buttons{
   display: flex;
   gap: 50px;
   margin-right: 50px;
+  /* color: #0C0D19; */
+  
 }
-
-.nav-links a{
+.nav-button{
   color: white;
-  text-decoration: none;
-  font-size: 30px;
+  background-color: #0C0D19;
+  border: none;
+  font-size: 20px;
+}
+.nav-button:hover{
+  color: #0A8BD0;
 }
 .nav-divider {
   border: 1.5px solid #0A8BD0;
-  /* margin: 0; */
   margin-top: 10px;
   margin-right: 20px;
-}
-.small-lines {
-  /* border: 1px solid #0A8BD0; */
-  background-color: #0A8BD0;
-  width: 30px;
-  height: 2px;
-  margin-top: 5px;
-  align-items: center;
-  /* margin-right: 20px; */
 }
 /*------------------------------------------------------ Main ------------------------------------------------------*/
 
@@ -85,7 +78,6 @@ hr {
   margin: 0;
 }
 .different-domains-text p{
-
   margin-left: 10px;
   font-size: 20px;
   width: 200px;
