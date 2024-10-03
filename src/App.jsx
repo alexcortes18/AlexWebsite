@@ -8,6 +8,7 @@ function App() {
     <>
       <Header />
       <MainContent></MainContent>
+      <MainContent></MainContent>
     </>
   )
 }

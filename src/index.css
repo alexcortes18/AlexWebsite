@@ -8,7 +8,7 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
-/*------------------------------------------------------  Header ------------------------------------------------------*/
+/*------------------------------------------------------ Header ------------------------------------------------------*/
 
 .header {
   display: flex;
@@ -36,6 +36,21 @@ body {
   text-decoration: none;
   font-size: 30px;
 }
+.nav-divider {
+  border: 1.5px solid #0A8BD0;
+  /* margin: 0; */
+  margin-top: 10px;
+  margin-right: 20px;
+}
+.small-lines {
+  /* border: 1px solid #0A8BD0; */
+  background-color: #0A8BD0;
+  width: 30px;
+  height: 2px;
+  margin-top: 5px;
+  align-items: center;
+  /* margin-right: 20px; */
+}
 /*------------------------------------------------------ Main ------------------------------------------------------*/
 
 .main-content{
@@ -57,6 +72,7 @@ body {
 
 hr {
   margin-bottom: 0;
+  border: 1px solid #0A8BD0;
 }
 
 .years-experience{
@@ -73,9 +89,7 @@ hr {
   margin-left: 10px;
   font-size: 20px;
   width: 200px;
-  margin-top: 5px;
-  /* display: flex;
-  align-items: center; */
+  margin-top: 5px; /* Cannot make it be centered automatically??!! */
 }
 .years-experience img {
   width: 25px;
