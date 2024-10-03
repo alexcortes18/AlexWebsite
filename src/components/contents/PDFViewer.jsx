@@ -20,8 +20,12 @@ export default function PDFViewer({ pdfLocation, initialScale, cssClass }) {
         <div className={cssClass}>
             <Document file={pdfLocation} onLoadSuccess={onDocumentLoadSuccess}>
                 <Page pageNumber={1} scale={scale} />
-                <Page pageNumber={2} scale={scale} />
             </Document>
+            <div className="secondPage">
+                <Document file={pdfLocation} onLoadSuccess={onDocumentLoadSuccess}>
+                    <Page pageNumber={2} scale={scale} />
+                </Document>
+            </div>
         </div>
     );
 }

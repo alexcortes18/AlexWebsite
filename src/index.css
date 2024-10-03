@@ -118,7 +118,7 @@ hr {
   padding: 1rem;
   border: 1px solid #ddd;
   border-radius: 10px;
-  background-color: #121231;
+  background-color: #0b152c;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -144,4 +144,8 @@ hr {
   overflow-y: auto;
   height: 100%;
   width: 100%;
+}
+
+.secondPage{
+  margin-top: -200px;
 }
