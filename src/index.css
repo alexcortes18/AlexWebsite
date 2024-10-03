@@ -2,7 +2,7 @@
 
 body {
   display: flex;
-  background-color: #0D0E1F;
+  background-color: #0C0D19;
   color: #ffffff;
   margin: 1rem;
   font-family: 'Inter', sans-serif;
@@ -15,18 +15,20 @@ body {
   width: 100vw;
   justify-content: flex-end;
   align-items: center;
+  height: 50px;
 }
 
 .header h1{
   margin: 0;
   flex-grow: 1;
   font-size: 40px;
+  margin-left: 20px;
 }
 
 .nav-links{
   display: flex;
   gap: 50px;
-  margin-right: 5rem;
+  margin-right: 50px;
 }
 
 .nav-links a{
@@ -35,3 +37,66 @@ body {
   font-size: 30px;
 }
 /*------------------------------------------------------ Main ------------------------------------------------------*/
+
+.main-content{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: calc(100vh - 120px); /* Substracting the header size. */
+  flex-grow: 1;
+}
+
+.introduction{
+  font-size: 52px;
+  margin-left: 5rem;
+}
+.small-introduction{
+  font-size: 26px;
+  width: 650px;
+}
+
+hr {
+  margin-bottom: 0;
+}
+
+.years-experience{
+  display: flex;
+  flex-grow: 0;
+  margin-top: 20px;
+}
+.years-experience p{
+  font-size: 50px;
+  margin: 0;
+}
+.different-domains-text p{
+
+  margin-left: 10px;
+  font-size: 20px;
+  width: 200px;
+  margin-top: 5px;
+  /* display: flex;
+  align-items: center; */
+}
+.years-experience img {
+  width: 25px;
+  height: auto;
+  margin-left: 5px;
+  object-fit: contain;
+}
+
+
+.pp-container{
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.profile-picture{
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/*------------------------------------------------------ - ------------------------------------------------------*/
