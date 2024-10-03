@@ -1,7 +1,11 @@
-import MainContent from "./contents/MainContent";
-import NavContext from "../store/NavContext";
 import { useContext } from "react";
+import NavContext from "../store/NavContext";
+
+
+import MainContent from "./contents/MainContent";
+import AlexCortesCV from "../assets/AlexCortesCV.pdf";
 import CoverLetter from "./contents/CoverLetter";
+import PDFViewer from "./contents/PDFViewer";
 
 export default function Contents() {
     const navCtx = useContext(NavContext);
@@ -10,21 +14,17 @@ export default function Contents() {
 
     if (navCtx.navigator === 0) {
         content = (
-            <>
-                {/* <PDFViewer
-                    pdfLocation={AlexCortesCV}
-                    initialScale={1.5}
-                    cssClass={"pdf"}
-                >
-                </PDFViewer> */}
-                <MainContent></MainContent>
-            </>
+            <MainContent></MainContent>
         );
     } else if (navCtx.navigator === 1) {
         content = (
-            <>
-                <h2>Curriculum</h2>
-            </>
+            <div>
+                <PDFViewer
+                    pdfLocation={AlexCortesCV}
+                    initialScale={1.5}
+                    cssClass={"pdf"}>
+                </PDFViewer>
+            </div>
         );
     } else if (navCtx.navigator === 2) {
         content = (
@@ -34,9 +34,7 @@ export default function Contents() {
         )
     } else if (navCtx.navigator === 3) {
         content = (
-            <>
-                <h2>Portfolio</h2>
-            </>
+            <h2>Portfolio</h2>
         );
     } else if (navCtx.navigator === 4) {
         content = <h2>Contact Me :)</h2>;

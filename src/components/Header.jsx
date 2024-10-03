@@ -6,7 +6,7 @@ const buttonData = [
     { id: 0, label: "Home" },
     { id: 1, label: "Curriculum Vitae" },
     { id: 2, label: "Cover Letter" },
-    { id: 3, label: "Portfolio" },
+    // { id: 3, label: "Portfolio" },
     { id: 4, label: "Contact Me" }
 ];
 
