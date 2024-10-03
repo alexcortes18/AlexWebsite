@@ -1,6 +1,7 @@
-import MainContent from "./MainContent";
+import MainContent from "./contents/MainContent";
 import NavContext from "../store/NavContext";
 import { useContext } from "react";
+import CoverLetter from "./contents/CoverLetter";
 
 export default function Contents() {
     const navCtx = useContext(NavContext);
@@ -26,7 +27,11 @@ export default function Contents() {
             </>
         );
     } else if (navCtx.navigator === 2) {
-        content = <h2>Cover Letter</h2>
+        content = (
+            <div className="cover-letter-container">
+                <CoverLetter></CoverLetter>
+            </div>
+        )
     } else if (navCtx.navigator === 3) {
         content = (
             <>

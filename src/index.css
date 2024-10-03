@@ -12,7 +12,7 @@ body {
 
 .header {
   display: flex;
-  width: 100vw;
+  /* width: 100vw; */
   justify-content: flex-end;
   align-items: center;
   height: 50px;
@@ -104,5 +104,30 @@ hr {
   object-fit: cover;
   border-radius: 50%;
 }
+/*-------------------------------------------------------  Cover Letter -----------------------------------------------*/
+.cover-letter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+  width: 95%;
+  margin: 2rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #121231;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cover-letter {
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  font-family: 'Georgia', serif;
+  font-size: 20px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
 /*------------------------------------------------------ - ------------------------------------------------------*/
