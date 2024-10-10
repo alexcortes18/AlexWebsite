@@ -1,16 +1,30 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import NavContext from "../store/NavContext";
-
 
 import MainContent from "./contents/MainContent";
 import AlexCortesCV from "../assets/AlexCortesCV.pdf";
 import CoverLetter from "./contents/CoverLetter";
 import PDFViewer from "./contents/PDFViewer";
+import Modal from "./UI/Modal";
 
 export default function Contents() {
     const navCtx = useContext(NavContext);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
 
     let content;
+
+    useEffect(() => {
+        if (navCtx.navigator === 4) {
+            setModalIsOpen(true);
+        } else {
+            setModalIsOpen(false);
+        }
+    }, [navCtx.navigator]);
+
+    function onCloseModal(){
+        setModalIsOpen(false);
+        navCtx.changeNavState(0); // To change to the Main content page
+    }
 
     if (navCtx.navigator === 0) {
         content = (
@@ -37,7 +51,16 @@ export default function Contents() {
             <h2>Portfolio</h2>
         );
     } else if (navCtx.navigator === 4) {
-        content = <h2>Contact Me :)</h2>;
+        content = (
+            <>
+                <Modal
+                    open={modalIsOpen}
+                    onClose={onCloseModal}>
+                </Modal>
+                <MainContent></MainContent>
+            </>
+
+        );
     }
 
     return content;

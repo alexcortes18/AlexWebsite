@@ -18,50 +18,58 @@ body {
   /* align-items: center; */
   height: 50px;
 }
-.header h1{
+
+.header h1 {
   margin: 0;
   flex-grow: 1;
   font-size: 40px;
   margin-left: 20px;
 }
-.nav-buttons{
+
+.nav-buttons {
   display: flex;
   width: 100%;
   flex-grow: 1;
   gap: 50px;
   margin-right: 50px;
   /* color: #0C0D19; */
-  
+
 }
-.nav-button{
+
+.nav-button {
   color: white;
   background-color: #0C0D19;
   border: none;
   font-size: 20px;
 }
-.nav-button:hover{
+
+.nav-button:hover {
   color: #0A8BD0;
 }
+
 .nav-divider {
   border: 1.5px solid #0A8BD0;
   margin-top: 10px;
   margin-right: 20px;
 }
+
 /*------------------------------------------------------ Main ------------------------------------------------------*/
 
-.main-content{
+.main-content {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  height: calc(100vh - 120px); /* Substracting the header size. */
+  height: calc(100vh - 120px);
+  /* Substracting the header size. */
   flex-grow: 1;
 }
 
-.introduction{
+.introduction {
   font-size: 52px;
   margin-left: 5rem;
 }
-.small-introduction{
+
+.small-introduction {
   font-size: 26px;
   width: 650px;
 }
@@ -71,21 +79,25 @@ hr {
   border: 1px solid #0A8BD0;
 }
 
-.years-experience{
+.years-experience {
   display: flex;
   flex-grow: 0;
   margin-top: 20px;
 }
-.years-experience p{
+
+.years-experience p {
   font-size: 50px;
   margin: 0;
 }
-.different-domains-text p{
+
+.different-domains-text p {
   margin-left: 10px;
   font-size: 20px;
   width: 200px;
-  margin-top: 5px; /* Cannot make it be centered automatically??!! */
+  margin-top: 5px;
+  /* Cannot make it be centered automatically??!! */
 }
+
 .years-experience img {
   width: 25px;
   height: auto;
@@ -94,19 +106,21 @@ hr {
 }
 
 
-.pp-container{
+.pp-container {
   display: flex;
   flex-grow: 1;
   justify-content: center;
   align-items: center;
   padding: 20px;
 }
-.profile-picture{
+
+.profile-picture {
   width: 500px;
   height: 500px;
   object-fit: cover;
   border-radius: 50%;
 }
+
 /*-------------------------------------------------------  Cover Letter -----------------------------------------------*/
 .cover-letter-container {
   display: flex;
@@ -146,6 +160,28 @@ hr {
   width: 100%;
 }
 
-.secondPage{
+.secondPage {
   margin-top: -200px;
+}
+
+.modal {
+  width: 50%;
+  height: 20%;
+  max-width: 40rem;
+
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background-color: #3d4c7e;
+  border-radius: 6px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  padding: 1rem;
+  animation: fade-slide-up 0.3s ease-out forwards;
+}
+
+.modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.55);
 }
