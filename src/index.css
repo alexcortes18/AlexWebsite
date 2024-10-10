@@ -164,24 +164,55 @@ hr {
   margin-top: -200px;
 }
 
+/*------------------------------------------------------  Modal ------------------------------------------------------*/
 .modal {
-  width: 50%;
-  height: 20%;
-  max-width: 40rem;
-
-  position: fixed;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  background-color: #3d4c7e;
+  width: 30%;
+  height: 50%;
+  /* max-width: 40rem; */
+  /* position: fixed; */
+  /* top: 50%; */
+  /* left: 50%; */
+  /* transform: translate(-40%, -30%); */
+  background-color: #d4d5e4; /* #e4ddd4 */
   border-radius: 6px;
   border: none;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
   padding: 1rem;
-  animation: fade-slide-up 0.3s ease-out forwards;
+  /* animation: fade-slide-up 0.3s ease-out forwards; */
 }
-
 .modal::backdrop {
   background-color: rgba(0, 0, 0, 0.55);
 }
+.modal button{
+  flex-direction: right;
+  width: 5rem;
+  height: 2rem;
+  align-items: end;
+  justify-items: end;
+  font: inherit;
+  cursor: pointer;
+  background-color: #0C0D19;
+  border: 1px solid #0C0D19;
+  color: white;
+  /* padding: 0.5rem 1.5rem; */
+  border-radius: 4px;
+}
+.modal-content{
+  display: flex;
+  flex-direction: column;
+ }
+ .modal-content a{
+    text-decoration: none; /* Removes the underline */
+    color: #0613a3; /* Sets the link color */
+}
+
+.modal-content a:hover {
+    color: rgba(19, 19, 149, 0.589); /* Change color on hover */
+}
+
+.modal-controls{
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
