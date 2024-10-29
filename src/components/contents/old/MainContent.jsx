@@ -1,5 +1,5 @@
-import ProfilePicture from '../../assets/Alex_dark_blue.jpg'
-import Plus from '../../assets/plus.png'
+import ProfilePicture from '../../../assets/Alex_dark_blue.jpg'
+import Plus from '../../../assets/plus.png'
 
 export default function MainContent() {
     return (

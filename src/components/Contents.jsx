@@ -1,10 +1,10 @@
 import { useContext, useState, useEffect } from "react";
 import NavContext from "../store/NavContext";
 
-import MainContent from "./contents/MainContent";
+import MainContent from "./contents/old/MainContent";
 import AlexCortesCV from "../assets/AlexCortesCV.pdf";
-import CoverLetter from "./contents/CoverLetter";
-import PDFViewer from "./contents/PDFViewer";
+import CoverLetter from "./contents/old/CoverLetter";
+import PDFViewer from "./contents/old/PDFViewer";
 import Modal from "./UI/Modal";
 
 export default function Contents() {

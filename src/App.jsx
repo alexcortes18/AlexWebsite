@@ -2,13 +2,37 @@ import Header from "./components/Header"
 import Contents from "./components/Contents"
 import { NavContextProvider } from "./store/NavContext"
 
+import { createBrowserRouter, Router, RouterProvider } from "react-router-dom"
+import RootLayout from './pages/RootLayout.jsx'
+import ErrorPage from "./pages/ErrorPage"
+import Home from "./pages/Home"
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    errorElement: <ErrorPage />,
+    children:
+      [
+        {
+          index: true,
+          element: <Home />
+        }
+      ]
+  }
+]);
+
 function App() {
   return (
     <>
-      <NavContextProvider>
+      {/* <NavContextProvider>
         <Header />
         <Contents></Contents>
-      </NavContextProvider>
+      </NavContextProvider> */}
+
+      <RouterProvider router={router}/>
+
+
     </>
   )
 }

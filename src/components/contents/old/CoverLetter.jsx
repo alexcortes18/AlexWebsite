@@ -1,4 +1,4 @@
-import { coverLetter } from "../../data/coverletter";
+import { coverLetter } from "../../.././data/coverletter";
 
 export default function CoverLetter() {
     return (
