@@ -6,7 +6,7 @@
     /* top: 50%; */
     /* left: 50%; */
     /* transform: translate(-40%, -30%); */
-    background-color: #25283c; /* #e4ddd4 */
+    background-color: #1a2041; /* #e4ddd4 */
     border-radius: 6px;
     border: none;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
@@ -36,7 +36,7 @@
    }
    .modalContent a{
       text-decoration: none; /* Removes the underline */
-      color: #4e95f7; /* Sets the link color */
+      color: #70a9fa; /* Sets the link color */
   }
   
   .modalContent a:hover {

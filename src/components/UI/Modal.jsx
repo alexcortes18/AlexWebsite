@@ -20,17 +20,17 @@ export default function Modal({ open, onClose }) {
                 <p>
                     <strong><label>Email:</label></strong>
                     <br></br>
-                    <text>alex.cortes.i10@gmail.com</text>
+                    <span>alex.cortes.i10@gmail.com</span>
                 </p>
                 <p>
                     <strong><label>Phone Number:</label></strong>
                     <br></br>
-                    <text>+886 0958309287</text>
+                    <span>+886 0958309287</span>
                 </p>
                 <p>
                     <strong><label>Line ID:</label></strong>
                     <br></br>
-                    <text>alexjcortes</text>
+                    <span>alexjcortes</span>
                 </p>
                 <p>
                     <strong><label>LinkedIn:</label></strong>

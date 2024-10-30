@@ -43,7 +43,7 @@ export default function MainNavigation() {
                                 </NavLink>
                             </li>
                             <li>
-                                <button onClick={openModal} className={classes.contactButton}>
+                                <button onClick={openModal} className={classes.linkAsButton}>
                                     Contact Me
                                 </button>
                             </li>
