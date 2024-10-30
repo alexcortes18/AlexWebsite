@@ -10,9 +10,9 @@ body {
 
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
+  /* font-size: 16px; */
+  /* line-height: 24px; */
+  /* font-weight: 400; */
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -42,7 +42,7 @@ body {
   --color-primary-600: #6274f9;
   --color-primary-700: #4d56fb;
   --color-primary-800: #334efa;
-  --color-primary-900: #f6ad1b;
+  --color-primary-900: #1b4ef6;
 }
 
 /*------------------------------------------------------ Header ------------------------------------------------------*/
@@ -62,17 +62,17 @@ body {
   margin-left: 20px;
 } */
 
-.nav-buttons {
+/* .nav-buttons {
   display: flex;
   width: 100%;
   flex-grow: 1;
   gap: 50px;
   margin-right: 50px;
-  /* color: #0C0D19; */
+  /* color: #0C0D19; 
 
-}
+}*/
 
-.nav-button {
+/* .nav-button {
   color: white;
   background-color: #0C0D19;
   border: none;
@@ -87,75 +87,7 @@ body {
   border: 1.5px solid #0A8BD0;
   margin-top: 10px;
   margin-right: 20px;
-}
-
-/*------------------------------------------------------ Main ------------------------------------------------------*/
-
-.main-content {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  height: calc(100vh - 120px);
-  /* Substracting the header size. */
-  flex-grow: 1;
-}
-
-.introduction {
-  font-size: 52px;
-  margin-left: 5rem;
-}
-
-.small-introduction {
-  font-size: 26px;
-  width: 650px;
-}
-
-hr {
-  margin-bottom: 0;
-  border: 1px solid #0A8BD0;
-}
-
-.years-experience {
-  display: flex;
-  flex-grow: 0;
-  margin-top: 20px;
-}
-
-.years-experience p {
-  font-size: 50px;
-  margin: 0;
-}
-
-.different-domains-text p {
-  margin-left: 10px;
-  font-size: 20px;
-  width: 200px;
-  margin-top: 5px;
-  /* Cannot make it be centered automatically??!! */
-}
-
-.years-experience img {
-  width: 25px;
-  height: auto;
-  margin-left: 5px;
-  object-fit: contain;
-}
-
-
-.pp-container {
-  display: flex;
-  flex-grow: 1;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-.profile-picture {
-  width: 500px;
-  height: 500px;
-  object-fit: cover;
-  border-radius: 50%;
-}
+}  */
 
 /*-------------------------------------------------------  Cover Letter -----------------------------------------------*/
 .cover-letter-container {
@@ -198,56 +130,4 @@ hr {
 
 .secondPage {
   margin-top: -200px;
-}
-
-/*------------------------------------------------------  Modal ------------------------------------------------------*/
-.modal {
-  width: 30%;
-  height: 50%;
-  /* max-width: 40rem; */
-  /* position: fixed; */
-  /* top: 50%; */
-  /* left: 50%; */
-  /* transform: translate(-40%, -30%); */
-  background-color: #d4d5e4; /* #e4ddd4 */
-  border-radius: 6px;
-  border: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-  padding: 1rem;
-  /* animation: fade-slide-up 0.3s ease-out forwards; */
-}
-.modal::backdrop {
-  background-color: rgba(0, 0, 0, 0.55);
-}
-.modal button{
-  flex-direction: right;
-  width: 5rem;
-  height: 2rem;
-  align-items: end;
-  justify-items: end;
-  font: inherit;
-  cursor: pointer;
-  background-color: #0C0D19;
-  border: 1px solid #0C0D19;
-  color: white;
-  /* padding: 0.5rem 1.5rem; */
-  border-radius: 4px;
-}
-.modal-content{
-  display: flex;
-  flex-direction: column;
- }
- .modal-content a{
-    text-decoration: none; /* Removes the underline */
-    color: #0613a3; /* Sets the link color */
-}
-
-.modal-content a:hover {
-    color: rgba(19, 19, 149, 0.589); /* Change color on hover */
-}
-
-.modal-controls{
-  display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
 }

@@ -1,5 +1,8 @@
+import MainContent from "../components/MainContent";
+
 export default function Home() {
     return <>
-        <h1>Home!</h1>
+        <MainContent></MainContent>
+        <h2>HERE GOES MORE!</h2>
     </>
 }

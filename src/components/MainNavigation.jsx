@@ -1,7 +1,18 @@
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 import classes from "./MainNavigation.module.css";
+import Modal from "./UI/Modal";
 
 export default function MainNavigation() {
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+
+    function openModal() {
+        setModalIsOpen(true);
+    }
+    function onCloseModal(){
+        setModalIsOpen(false);
+    }
+
     return (
         <>
             <div className={classes.header}>
@@ -19,7 +30,7 @@ export default function MainNavigation() {
                             </li>
                             <li>
                                 <NavLink
-                                    to={"/"}
+                                    to={"/curriculum"}
                                     className={({ isActive }) => isActive ? classes.isActive: undefined}>
                                     CV
                                 </NavLink>
@@ -32,17 +43,16 @@ export default function MainNavigation() {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink
-                                    to={"/"}
-                                    className={({ isActive }) => isActive ? classes.isActive: undefined}>
+                                <button onClick={openModal} className={classes.contactButton}>
                                     Contact Me
-                                </NavLink>
+                                </button>
                             </li>
                         </ul>
                     </nav>
                 </header>
             </div>
-
+            {/* Render the modal always: */}
+            {modalIsOpen && <Modal open={modalIsOpen} onClose={onCloseModal} />}
         </>
     );
 }

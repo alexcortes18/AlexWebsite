@@ -1,4 +1,5 @@
 import { useRef, useEffect } from "react";
+import classes from "./Modal.module.css";
 
 export default function Modal({ open, onClose }) {
     const dialog = useRef();
@@ -13,9 +14,9 @@ export default function Modal({ open, onClose }) {
 
 
     return (
-        <dialog ref={dialog} onClose={onClose} className="modal">
+        <dialog ref={dialog} onClose={onClose} className={classes.modal}>
             <h2>Contact me at:</h2>
-            <div className="modal-content">
+            <div className={classes.modalContent}>
                 <p>
                     <strong><label>Email:</label></strong>
                     <br></br>
@@ -37,7 +38,7 @@ export default function Modal({ open, onClose }) {
                     <a href="https://www.linkedin.com/in/alejandro-izaguirre-225b42157/">Alex's Linkedin</a>
                 </p>
             </div>
-            <div className="modal-controls">
+            <div className={classes.modalControls}>
                 <button onClick={onClose}>Close</button>
             </div>
         </dialog>

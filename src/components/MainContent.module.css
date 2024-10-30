@@ -1,0 +1,65 @@
+
+.mainContent {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: calc(100vh - 120px);
+    /* Substracting the header size. */
+    flex-grow: 1;
+  }
+  
+  .introduction {
+    font-size: 52px;
+    margin-left: 5rem;
+  }
+  
+  .smallIntroduction {
+    font-size: 26px;
+    width: 650px;
+  }
+  
+  hr {
+    margin-bottom: 0;
+    border: 1px solid #0A8BD0;
+  }
+  
+  .yearsExperience {
+    display: flex;
+    flex-grow: 0;
+    margin-top: 20px;
+  }
+  
+  .yearsExperience p {
+    font-size: 50px;
+    margin: 0;
+  }
+
+  .yearsExperience img {
+    width: 25px;
+    height: auto;
+    margin-left: 5px;
+    object-fit: contain;
+  }
+  
+  .differentDomainsText p {
+    margin-left: 10px;
+    font-size: 20px;
+    width: 200px;
+    margin-top: 5px;
+    /* Cannot make it be centered automatically??!! */
+  }
+  
+  .ppContainer {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .profilePicture {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 50%;
+  }

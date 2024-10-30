@@ -1,0 +1,50 @@
+.modal {
+    width: 30%;
+    height: 50%;
+    /* max-width: 40rem; */
+    /* position: fixed; */
+    /* top: 50%; */
+    /* left: 50%; */
+    /* transform: translate(-40%, -30%); */
+    background-color: #25283c; /* #e4ddd4 */
+    border-radius: 6px;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    padding: 1rem;
+    /* animation: fade-slide-up 0.3s ease-out forwards; */
+  }
+  .modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.55);
+  }
+  .modal button{
+    flex-direction: right;
+    width: 5rem;
+    height: 2rem;
+    align-items: end;
+    justify-items: end;
+    font: inherit;
+    cursor: pointer;
+    background-color: #0C0D19;
+    border: 1px solid #0C0D19;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+  }
+  .modalContent{
+    display: flex;
+    flex-direction: column;
+   }
+   .modalContent a{
+      text-decoration: none; /* Removes the underline */
+      color: #4e95f7; /* Sets the link color */
+  }
+  
+  .modalContent a:hover {
+      color: rgba(18, 126, 193, 0.589); /* Change color on hover */
+  }
+  
+  .modalControls{
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }

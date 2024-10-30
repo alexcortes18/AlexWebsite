@@ -1,6 +1,6 @@
-import Button from "./UI/Button";
+import Button from "../UI/Button";
 import { useContext } from "react"
-import NavContext from "../store/NavContext";
+import NavContext from "../../store/NavContext";
 
 const buttonData = [
     { id: 0, label: "Home" },
