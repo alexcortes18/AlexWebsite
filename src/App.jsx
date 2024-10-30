@@ -18,11 +18,13 @@ const router = createBrowserRouter([
           index: true,
           element: <Home />
         },
-        {path: 'coverletter',
-          element: <CoverLetter/>
+        {
+          path: 'coverletter',
+          element: <CoverLetter />
         },
-        {path: 'curriculum',
-          element: <Curriculum/>
+        {
+          path: 'curriculum',
+          element: <Curriculum />
         }
       ]
   }
@@ -35,8 +37,8 @@ function App() {
         <Header />
         <Contents></Contents>
       </NavContextProvider> */}
-      
-      <RouterProvider router={router}/>
+
+      <RouterProvider router={router} />
     </>
   )
 }

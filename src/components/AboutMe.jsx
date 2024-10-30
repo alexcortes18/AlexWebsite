@@ -6,8 +6,7 @@ import speedVariators from ".././assets/speedVariators.png"
 
 import classes from "./AboutMe.module.css"
 
-export default function AboutMe() {
-    const pictures = [AlexHigh, Ingea, meters, speedVariators]
+export default function AboutMe({ title, text, pictures }) {
     const [pictureNumber, setPictureNumber] = useState(0);
 
     function onNextPicture() {
@@ -26,17 +25,8 @@ export default function AboutMe() {
             <div className={classes.textImageSection}>
 
                 <div className={classes.textSection}>
-                    <h2>Honduras</h2>
-                    <p>
-                        In Honduras, I worked as a Project Engineer for an automation engineering company.
-                        This is a family business called INGEA. INGEA focuses on providing engineering services to other
-                        companies, mainly in 2 aspects.First, an important focus was automating industrial processes through
-                        PLC (Programmable Logic Controllers), and helping diagnosing issues or providing other solutions.
-                        <br></br>
-                        <br></br>
-                        Second, and equally important, was the electrical metering and other electrical services and
-                        installations. This helps industries realize their electrical consumption and areas of improvement.
-                    </p>
+                    <h2>{title}</h2>
+                    {text}
                 </div>
 
                 <div className={classes.imageSection}>
