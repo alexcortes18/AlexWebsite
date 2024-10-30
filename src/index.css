@@ -8,14 +8,50 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
-/*------------------------------------------------------ Header ------------------------------------------------------*/
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
 
-.header {
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  /* background-color: #242424; */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --color-gray-100: #f4f3f1;
+  --color-gray-200: #dddbd8;
+  --color-gray-300: #ccc9c6;
+  --color-gray-400: #aeaba7;
+  --color-gray-500: #8a8784;
+  --color-gray-600: #656360;
+  --color-gray-700: #4b4a47;
+  --color-gray-800: #31302e;
+  --color-gray-900: #1f1d1b;
+
+  --color-primary-100: #e1e5fc;
+  --color-primary-200: #e1cdfc;
+  --color-primary-300: #afbffa;
+  --color-primary-400: #97a4fb;
+  --color-primary-500: #7c82ff;
+  --color-primary-600: #6274f9;
+  --color-primary-700: #4d56fb;
+  --color-primary-800: #334efa;
+  --color-primary-900: #f6ad1b;
+}
+
+/*------------------------------------------------------ Header ------------------------------------------------------*/
+/* .header {
   display: flex;
   width: 100vw;
   margin-right: -2rem;
-  /* justify-content: flex-end; */
-  /* align-items: center; */
+  justify-content: flex-end;
+  align-items: center;
   height: 50px;
 }
 
@@ -24,7 +60,7 @@ body {
   flex-grow: 1;
   font-size: 40px;
   margin-left: 20px;
-}
+} */
 
 .nav-buttons {
   display: flex;
@@ -215,4 +251,3 @@ hr {
   justify-content: flex-end;
   gap: 1rem;
 }
-

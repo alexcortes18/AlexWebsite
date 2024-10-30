@@ -1,0 +1,43 @@
+.header{
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    padding: 20px;
+    box-sizing: border-box; /* Important to not go over the screen */
+  }
+  
+  .header h1 {
+    margin-left: 20px;
+  }
+  
+  .navigation{
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+    gap: 5px;
+    margin-right: 50px;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .list{
+    display: flex;
+    gap: 2rem;
+  }
+  
+  /* 'a' works for Links or NavLinks */
+  .list a { 
+    text-decoration: none;
+    /* color: var(--color-primary-400); */
+    color: white;
+    font-size: 25px;
+  }
+  
+  .list a:hover,
+  .list a .isActive{
+    color: var(--color-primary-900);
+  }
+  

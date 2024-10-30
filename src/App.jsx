@@ -6,6 +6,7 @@ import { createBrowserRouter, Router, RouterProvider } from "react-router-dom"
 import RootLayout from './pages/RootLayout.jsx'
 import ErrorPage from "./pages/ErrorPage"
 import Home from "./pages/Home"
+import CoverLetter from "./pages/CoverLetter.jsx"
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,9 @@ const router = createBrowserRouter([
         {
           index: true,
           element: <Home />
+        },
+        {path: 'coverletter',
+          element: <CoverLetter/>
         }
       ]
   }
