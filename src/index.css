@@ -8,6 +8,16 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
+/* .hrContainer{
+  align-items: center;
+  justify-content: center;
+  width: 95vw;
+}
+
+hr {
+  border: 1px solid #0A8BD0;
+} */
+
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   /* font-size: 16px; */
@@ -44,51 +54,6 @@ body {
   --color-primary-800: #334efa;
   --color-primary-900: #1b4ef6;
 }
-
-/*------------------------------------------------------ Header ------------------------------------------------------*/
-/* .header {
-  display: flex;
-  width: 100vw;
-  margin-right: -2rem;
-  justify-content: flex-end;
-  align-items: center;
-  height: 50px;
-}
-
-.header h1 {
-  margin: 0;
-  flex-grow: 1;
-  font-size: 40px;
-  margin-left: 20px;
-} */
-
-/* .nav-buttons {
-  display: flex;
-  width: 100%;
-  flex-grow: 1;
-  gap: 50px;
-  margin-right: 50px;
-  /* color: #0C0D19; 
-
-}*/
-
-/* .nav-button {
-  color: white;
-  background-color: #0C0D19;
-  border: none;
-  font-size: 20px;
-}
-
-.nav-button:hover {
-  color: #0A8BD0;
-}
-
-.nav-divider {
-  border: 1.5px solid #0A8BD0;
-  margin-top: 10px;
-  margin-right: 20px;
-}  */
-
 /*-------------------------------------------------------  Cover Letter -----------------------------------------------*/
 .cover-letter-container {
   display: flex;

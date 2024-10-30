@@ -18,8 +18,8 @@
   }
   .modal button{
     flex-direction: right;
-    width: 5rem;
-    height: 2rem;
+    width: 90px;
+    height: 40px;
     align-items: end;
     justify-items: end;
     font: inherit;
@@ -46,5 +46,5 @@
   .modalControls{
     display: flex;
     justify-content: flex-end;
-    gap: 1rem;
+    /* gap: 1rem; */
   }
