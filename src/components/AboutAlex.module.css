@@ -1,0 +1,96 @@
+.aboutMeContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.aboutMeContainer h2{
+    margin: none;
+    margin-left: 3rem;
+    font-size: 26px;
+}
+
+.imageSection{
+    /* width: 50vw; */
+    /* margin-left: 3rem; */
+    /* max-width: 1400px; */
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.nobullets{
+    list-style-type: none;
+}
+
+.imageContainer{
+    /* width: 500px; */
+    height: 400px;
+    max-width: 450px;
+}
+
+.text{
+    /* width: 1000px; */
+    margin-left: 3rem;
+    margin-right: 3rem;
+    margin-top: 2rem;
+    font-size: 20px;
+    /* max-width: 100%;
+    overflow-wrap: break-word; */
+}
+
+.buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+.buttons button{
+    background-color: rgb(40, 52, 101);
+    color: white;
+    border: solid rgb(52, 67, 130);
+    border-radius: 4px;
+    width: 70px;
+    height: 30px;
+    outline: none;
+    box-shadow: none;
+}
+.buttons button:hover{
+    background-color: rgb(31, 62, 182);
+}
+
+.buttons button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+    outline: none;
+    color: inherit;
+    background-color: inherit;
+}
+
+/* ------------------------------- */
+/* Buttons for changing sections */
+/* ------------------------------- */
+.imageSection button{
+    background-color: rgb(40, 52, 101);
+    color: white;
+    border: solid rgb(52, 67, 130);
+    border-radius: 4px;
+    width: 80px;
+    height: 40px;
+    outline: none;
+    box-shadow: none;
+    justify-content: center;
+}
+
+.imageSection button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+    outline: none;
+    color: inherit;
+    background-color: inherit;
+}

@@ -1,4 +1,4 @@
-import { NavContextProvider } from "./store/NavContext"
+import { NavContextProvider } from "./components/old/NavContext.jsx"
 
 import { createBrowserRouter, Router, RouterProvider } from "react-router-dom"
 import RootLayout from './pages/RootLayout.jsx'
