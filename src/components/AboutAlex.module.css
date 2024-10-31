@@ -25,7 +25,7 @@
 }
 
 .imageSection{
-    margin-top: 20px;
+    margin-top: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -47,10 +47,12 @@
     /* width: 1000px; */
     margin-left: 3rem;
     margin-right: 3rem;
-    margin-top: 2rem;
-    font-size: 20px;
+    margin-top: 1rem;
     /* max-width: 100%;
     overflow-wrap: break-word; */
+}
+.text p{
+    font-size: 20px;
 }
 
 .buttons{
