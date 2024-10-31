@@ -1,18 +1,24 @@
 .aboutMeContainer{
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
-.aboutMeContainer h2{
+.aboutMeContainer p{
+    display: flex;
     margin: none;
-    margin-left: 3rem;
+    /* margin-left: 3rem; */
+    padding: 10px;
     font-size: 26px;
 }
 
+.sectionChangeContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .imageSection{
-    /* width: 50vw; */
-    /* margin-left: 3rem; */
-    /* max-width: 1400px; */
     margin-top: 20px;
     display: flex;
     align-items: center;
@@ -74,7 +80,7 @@
 /* ------------------------------- */
 /* Buttons for changing sections */
 /* ------------------------------- */
-.imageSection button{
+.aboutMeContainer button{
     background-color: rgb(40, 52, 101);
     color: white;
     border: solid rgb(52, 67, 130);
@@ -86,7 +92,7 @@
     justify-content: center;
 }
 
-.imageSection button:disabled {
+.aboutMeContainer button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
     box-shadow: none;

@@ -35,27 +35,20 @@ export default function AboutAlex({ title, text, picturesArray }) {
         <>
             <div className={classes.aboutMeContainer}>
                 {/* TITLE */}
-                <h2>{title}</h2>
+                <div className={classes.sectionChangeContainer}>
+                    <button onClick={onLastSection} disabled={sectionNumber <= 0}>Previous Section</button>
+                    <p>{title}</p>
+                    <button onClick={onNextSection} disabled={sectionNumber >= sections.length - 1}>Next Section</button>
+                </div>
+
 
                 {/* PICTURES */}
                 <div className={classes.imageSection}>
-                    <button
-                        onClick={onLastSection}
-                        disabled={sectionNumber <= 0}
-                    >
-                        Previous Section</button>
-
                     {currentPictures.map((picture, index) =>
                         <li key={index} className={classes.nobullets}>
                             <img src={picture} className={classes.imageContainer} />
                         </li>
                     )}
-
-                    <button
-                        onClick={onNextSection}
-                        disabled={sectionNumber >= sections.length - 1}
-                    >
-                        Next Section</button>
                 </div>
 
 
