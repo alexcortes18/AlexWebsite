@@ -5,6 +5,9 @@ import { aboutMeActions } from "../store/aboutme-slice";
 import { sections } from "../store/aboutme-slice";
 import classes from "./AboutAlex.module.css";
 
+import rightArrow from "../assets/rightArrow.png"
+import leftArrow from "../assets/leftArrow.png"
+
 export default function AboutAlex({ title, text, picturesArray }) {
     const sectionNumber = useSelector(state => state.aboutme.activeSection);
     const dispatch = useDispatch();
@@ -36,9 +39,13 @@ export default function AboutAlex({ title, text, picturesArray }) {
             <div className={classes.aboutMeContainer}>
                 {/* TITLE */}
                 <div className={classes.sectionChangeContainer}>
-                    <button onClick={onLastSection} disabled={sectionNumber <= 0}>Previous Section</button>
+                    <button onClick={onLastSection} disabled={sectionNumber <= 0}>
+                        <img src={leftArrow} />
+                    </button>
                     <p>{title}</p>
-                    <button onClick={onNextSection} disabled={sectionNumber >= sections.length - 1}>Next Section</button>
+                    <button onClick={onNextSection} disabled={sectionNumber >= sections.length - 1}>
+                        <img src={rightArrow} />
+                    </button>
                 </div>
 
 
