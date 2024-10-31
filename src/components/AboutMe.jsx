@@ -1,10 +1,6 @@
 import { useState } from "react"
-import AlexHigh from ".././assets/AlexHigh.png"
-import Ingea from ".././assets/Ingea.png"
-import meters from ".././assets/meters.png"
-import speedVariators from ".././assets/speedVariators.png"
-
 import classes from "./AboutMe.module.css"
+
 
 export default function AboutMe({ title, text, pictures }) {
     const [pictureNumber, setPictureNumber] = useState(0);

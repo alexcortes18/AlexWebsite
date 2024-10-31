@@ -1,4 +1,5 @@
 import ProfilePicture from '../assets/Alex_dark_blue.jpg'
+import alex_suit from ".././assets/alex_suit.png"
 import Plus from '../assets/plus.png'
 import classes from './MainContent.module.css'
 

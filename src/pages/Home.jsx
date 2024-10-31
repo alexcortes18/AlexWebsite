@@ -1,14 +1,25 @@
 import AboutMe from "../components/AboutMe";
 import MainContent from "../components/MainContent";
 
+//Honduras:
 import AlexHigh from ".././assets/AlexHigh.png"
+import controlPanel from ".././assets/controlPanel.png"
 import Ingea from ".././assets/Ingea.png"
 import meters from ".././assets/meters.png"
 import speedVariators from ".././assets/speedVariators.png"
 
+//Taiwan:
+import alex_suit from ".././assets/alex_suit.png"
+import brain_class from ".././assets/brain_class.png"
+import dorm_view from ".././assets/dorm_view.png"
+import NTHU_memories from ".././assets/NTHU_memories.png"
+import Oral_defense from ".././assets/Oral_defense.png"
+
+
 
 export default function Home() {
-    const hondurasPictures = [AlexHigh, Ingea, meters, speedVariators]
+    const hondurasPictures = [AlexHigh, Ingea, controlPanel, meters, speedVariators]
+    const taiwanPictures = [alex_suit, brain_class, dorm_view, NTHU_memories, Oral_defense]
 
     const hondurasText = <p>
         In Honduras, I worked as a Project Engineer for an automation engineering company.
@@ -28,6 +39,6 @@ export default function Home() {
     return <>
         <MainContent></MainContent>
         <AboutMe title={"Honduras"} text={hondurasText} pictures={hondurasPictures}></AboutMe>
-        <AboutMe title={"Taiwan"} text={taiwanText} pictures={hondurasPictures}></AboutMe>
+        <AboutMe title={"Taiwan"} text={taiwanText} pictures={taiwanPictures}></AboutMe>
     </>
 }
