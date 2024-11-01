@@ -37,6 +37,12 @@ export default function Modal({ open, onClose }) {
                     <br></br>
                     <a href="https://www.linkedin.com/in/alejandro-izaguirre-225b42157/">Alex's Linkedin</a>
                 </p>
+                <p>
+                    <strong><label>Github:</label></strong>
+                    <br></br>
+                    <a href="https://github.com/alexcortes18">Alex's Github</a>
+                    
+                </p>
             </div>
             <div className={classes.modalControls}>
                 <button onClick={onClose}>Close</button>
