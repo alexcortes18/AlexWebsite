@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-
-import AboutMe from "../components/old/AboutMe";
 import MainContent from "../components/MainContent";
 
 //Honduras:
@@ -58,8 +56,6 @@ export default function Home() {
         {/* <AboutMe title={"Honduras"} text={hondurasText} pictures={hondurasPictures}></AboutMe> */}
         {/* <AboutMe title={"Taiwan"} text={taiwanNTHUText} pictures={taiwanPictures}></AboutMe> */}
 
-        <p className="about-me">About me!</p>
-
         {activeSection === "Honduras" && (
             <AboutAlex title={"Honduras Engineering Work"} text={hondurasText} picturesArray={hondurasPicturesArray} />
         )
@@ -68,7 +64,5 @@ export default function Home() {
             <AboutAlex title={"NTHU Life"} text={taiwanNTHUText} picturesArray={NTHUpicturesArray} />
         )
         }
-
-
     </>
 }

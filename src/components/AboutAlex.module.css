@@ -1,10 +1,10 @@
-.aboutMeContainer{
+.aboutMeContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.aboutMeContainer p{
+.aboutMeContainer p {
     display: flex;
     margin: none;
     /* margin-left: 3rem; */
@@ -12,7 +12,7 @@
     font-size: 26px;
 }
 
-.sectionChangeContainer{
+.sectionChangeContainer {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -20,11 +20,11 @@
     justify-content: center;
 }
 
-.sectionChangeContainer img{
+.sectionChangeContainer img {
     padding: 10px;
 }
 
-.imageSection{
+.imageSection {
     margin-top: 10px;
     display: flex;
     align-items: center;
@@ -33,17 +33,17 @@
     flex-wrap: wrap;
 }
 
-.nobullets{
+.nobullets {
     list-style-type: none;
 }
 
-.imageContainer{
+.imageContainer {
     /* width: 500px; */
     height: 400px;
     max-width: 450px;
 }
 
-.text{
+.text {
     /* width: 1000px; */
     margin-left: 3rem;
     margin-right: 3rem;
@@ -51,18 +51,23 @@
     /* max-width: 100%;
     overflow-wrap: break-word; */
 }
-.text p{
+
+.text p {
     font-size: 20px;
+    margin-bottom: 7rem;
+    /* some extra space to make it more nice on the eyes. */
 }
 
-.buttons{
+/* Buttons for changing pictures within a section */
+.buttons {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 20px;
     gap: 10px;
 }
-.buttons button{
+
+.buttons button {
     background-color: rgb(40, 52, 101);
     color: white;
     border: solid rgb(52, 67, 130);
@@ -71,8 +76,13 @@
     height: 30px;
     outline: none;
     box-shadow: none;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+    /* background: none; */
 }
-.buttons button:hover{
+
+.buttons button:hover {
     background-color: rgb(31, 62, 182);
 }
 
@@ -85,26 +95,15 @@
     background-color: inherit;
 }
 
-/* ------------------------------- */
-/* Buttons for changing sections */
-/* ------------------------------- */
-.aboutMeContainer button{
-    background: none;
-    color: inherit;
-    border: none;
-    padding: 0;
-    font: inherit;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    box-shadow: none;
+/* EFFECTS */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 2s ease forwards;
 }
-
-.aboutMeContainer button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    box-shadow: none;
-    outline: none;
-    color: inherit;
-    background-color: inherit;
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0); /* to the original position */
+    }
 } 

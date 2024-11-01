@@ -1,0 +1,20 @@
+.buttonsContainer{
+    display: flex;
+    gap: 20px;
+}
+
+.sectionButton{
+    height: 35px;
+    width: 200px;
+    background-color: #1f235b;
+    border: none;
+    border-radius: 5px;
+    font-size: 24px;
+    padding-left: 5px;
+    padding-right: 5px;
+    cursor: pointer;
+}
+
+.sectionButton:hover{
+    background-color: rgb(31, 62, 182);
+}

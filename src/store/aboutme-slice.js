@@ -6,17 +6,19 @@ const aboutMeSlice = createSlice({
     name: 'aboutMe',
     initialState: { activeSection: 0, section: "Honduras" },
     reducers: {
-        nextSection(state) {
-            if (state.activeSection >= 0) {
-                state.activeSection += 1;
-                state.section = sections[state.activeSection];
-            }
+        onHondurasChange(state) {
+            // if (state.activeSection >= 0) {
+            //     state.activeSection += 1;
+            //     state.section = sections[state.activeSection];
+            // }
+            state.section = "Honduras"
         },
-        lastSection(state) {
-            if (state.activeSection <= sections.length - 1){
-                state.activeSection -= 1;
-                state.section = sections[state.activeSection];
-            }
+        onNTHULifeChange(state) {
+            // if (state.activeSection <= sections.length - 1){
+            //     state.activeSection -= 1;
+            //     state.section = sections[state.activeSection];
+            // }
+            state.section = "NTHU"
         }
     }
 });
