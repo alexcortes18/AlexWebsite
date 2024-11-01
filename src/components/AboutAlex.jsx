@@ -9,15 +9,13 @@ import buttonClasses from "./UI/Button.module.css"
 import useIntersectionObserver from "./utility/useIntersectionObserver";
 
 export default function AboutAlex({ title, text, picturesArray }) {
-    // const [isVisible, setIsVisible] = useState(false);
-    const sectionRef = useRef(null);
+    const section = useSelector(state=> state.aboutme.section);
+    const refs = [useRef(null), useRef(null), useRef(null)]; // Add more refs as needed
+    const [isVisible, hasAnimated] = useIntersectionObserver(refs);
     const dispatch = useDispatch();
 
     const [pictureArrayNumber, setPictureArrayNumber] = useState(0);
     const currentPictures = picturesArray[pictureArrayNumber];
-
-    const refs = [useRef(null), useRef(null), useRef(null)]; // Add more refs as needed
-    const [isVisible, hasAnimated] = useIntersectionObserver(refs);
 
     function onNextPictures() {
         if (pictureArrayNumber < picturesArray.length - 1) {
@@ -36,6 +34,9 @@ export default function AboutAlex({ title, text, picturesArray }) {
     function onNTHULife() {
         dispatch(aboutMeActions.onNTHULifeChange());
     }
+    function onExploringTaiwan() {
+        dispatch(aboutMeActions.onExploringTaiwanChange());
+    }
 
     return (
         <>
@@ -46,9 +47,9 @@ export default function AboutAlex({ title, text, picturesArray }) {
                     <p>{title}</p>
 
                     <div className={buttonClasses.buttonsContainer}>
-                        <Button className={buttonClasses.sectionButton} onClick={onHonduras}>Honduras</Button>
-                        <Button className={buttonClasses.sectionButton} onClick={onNTHULife}>NTHU Life</Button>
-                        <Button className={buttonClasses.sectionButton} >Taiwan</Button>
+                        <Button className={`${buttonClasses.sectionButton} ${section === "Honduras" ? buttonClasses.activebutton : ''}`} onClick={onHonduras}>Honduras</Button>
+                        <Button className={`${buttonClasses.sectionButton} ${section === "NTHU" ? buttonClasses.activebutton : ''}`} onClick={onNTHULife}>NTHU Life</Button>
+                        <Button className={`${buttonClasses.sectionButton} ${section === "ExploringTaiwan" ? buttonClasses.activebutton : ''}`} onClick={onExploringTaiwan}>Taiwan</Button>
                     </div>
 
                     {/* PICTURES */}

@@ -80,7 +80,7 @@
     cursor: pointer;
     text-align: center;
     border: none;
-    /* background: none; */
+    /* background: none;  */
 }
 
 .buttons button:hover {

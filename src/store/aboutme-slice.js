@@ -19,6 +19,13 @@ const aboutMeSlice = createSlice({
             //     state.section = sections[state.activeSection];
             // }
             state.section = "NTHU"
+        },
+        onExploringTaiwanChange(state) {
+            // if (state.activeSection <= sections.length - 1){
+            //     state.activeSection -= 1;
+            //     state.section = sections[state.activeSection];
+            // }
+            state.section = "ExploringTaiwan"
         }
     }
 });

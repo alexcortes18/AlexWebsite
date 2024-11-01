@@ -19,3 +19,7 @@
 .sectionButton:hover{
     background-color: rgb(31, 62, 182);
 }
+
+.activebutton{
+    background-color: rgb(39, 75, 219);
+}
