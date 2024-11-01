@@ -3,11 +3,17 @@ import { useSelector } from "react-redux";
 import MainContent from "../components/MainContent";
 
 //Honduras:
+import Ingea from ".././assets/Ingea.png"
+import green_jacket from ".././assets/green_jacket.png"
 import AlexHigh from ".././assets/AlexHigh.png"
 import controlPanel from ".././assets/controlPanel.png"
-import Ingea from ".././assets/Ingea.png"
+import choluteca_panel from ".././assets/choluteca_panel.png"
+import gildan_panel from ".././assets/gildan_panel.png"
 import meters from ".././assets/meters.png"
 import speedVariators from ".././assets/speedVariators.png"
+import recloser from ".././assets/recloser.png";
+import green_meters from ".././assets/green_meters.png";
+
 
 //Taiwan:
 import alex_suit from ".././assets/alex_suit.png"
@@ -23,7 +29,9 @@ export default function Home() {
     const activeSection = useSelector(state => state.aboutme.section);
     console.log(activeSection);
 
-    const hondurasPicturesArray = [[AlexHigh, controlPanel], [meters, speedVariators]]
+    const hondurasPicturesArray = [[AlexHigh, controlPanel, choluteca_panel], [meters,recloser,green_meters],
+    [green_jacket, speedVariators],
+    ]
     const NTHUpicturesArray = [[alex_suit, brain_class, dorm_view], [NTHU_memories, Oral_defense]]
 
     const hondurasText = <p>
