@@ -17,7 +17,7 @@ export default function AboutAlex({ title, text, picturesArray }) {
     const currentPictures = picturesArray[pictureArrayNumber];
 
     const refs = [useRef(null), useRef(null), useRef(null)]; // Add more refs as needed
-    const isVisible = useIntersectionObserver(refs);
+    const [isVisible, hasAnimated] = useIntersectionObserver(refs);
 
     function onNextPictures() {
         if (pictureArrayNumber < picturesArray.length - 1) {
@@ -39,9 +39,9 @@ export default function AboutAlex({ title, text, picturesArray }) {
 
     return (
         <>
-                <p ref={refs[0]} className={`${isVisible[0] ? classes["fade-in"] : ''}  about-me`}>About me!</p>
+                <p ref={refs[0]} className={`${isVisible[0] ? classes["fade-in"] : ''}  about-me ${hasAnimated[0] ? '' : classes.hidden}`}>About me!</p>
 
-                <div ref={refs[1]} className={`${isVisible[1] ? classes["fade-in"] : ''}  ${classes.aboutMeContainer}`}>
+                <div ref={refs[1]} className={`${isVisible[1] ? classes["fade-in"] : ''}  ${classes.aboutMeContainer} ${hasAnimated[1] ? '' : classes.hidden}`}>
                     {/* TITLE */}
                     <p>{title}</p>
 
@@ -72,7 +72,7 @@ export default function AboutAlex({ title, text, picturesArray }) {
                     </div>
 
                     {/* TEXT */}
-                    <div ref={refs[2]} className= {`${isVisible[2] ? classes["fade-in"] : ''}  ${classes.text}`}>
+                    <div ref={refs[2]} className= {`${isVisible[2] ? classes["fade-in"] : ''}  ${classes.text} ${hasAnimated[2] ? '' : classes.hidden}`}>
                         {text}
                     </div>
                 </div>

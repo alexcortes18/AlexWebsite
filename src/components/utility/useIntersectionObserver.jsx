@@ -1,9 +1,9 @@
 // CUSTOM HOOK for when refs enter into the screen. Mostly done with the help of chatgpt.
-
 import { useEffect, useState } from "react";
 
 export default function useIntersectionObserver(refs) {
     const [isVisible, setIsVisible] = useState(Array(refs.length).fill(false));
+    const [hasAnimated, setHasAnimated] = useState(Array(refs.length).fill(false)); // New state to track animation
 
     useEffect(() => {
         const observers = refs.map((ref, index) => {
@@ -12,25 +12,34 @@ export default function useIntersectionObserver(refs) {
                     if (entry.isIntersecting) {
                         setIsVisible((prev) => {
                             const updated = [...prev];
-                            if (!updated[index]) { // Only update and log if it wasn't visible before
+                            if (!updated[index] && !hasAnimated[index]) { // Only update if not already visible and not animated
                                 updated[index] = true;
                                 console.log(`Element ${index} is visible`);
                             }
                             return updated;
                         });
+
+                        // Mark as animated
+                        setHasAnimated((prev) => {
+                            const updated = [...prev];
+                            if (!updated[index]) { // Only update if not animated yet
+                                updated[index] = true; // Mark as animated
+                            }
+                            return updated;
+                        });
+
                         observer.unobserve(ref.current); // Stop observing once visible
                     } else {
                         setIsVisible((prev) => {
                             const updated = [...prev];
                             if (updated[index]) {
                                 console.log(`Element ${index} is not visible anymore`);
-                                updated[index] = false; // Mark as not visible
                             }
                             return updated;
                         });
                     }
                 },
-                { threshold: 0.1 }
+                { threshold: 0.05 }
             );
 
             if (ref.current) {
@@ -47,7 +56,7 @@ export default function useIntersectionObserver(refs) {
                 }
             });
         };
-    }, [refs]);
+    }, [refs, hasAnimated]);
 
-    return isVisible;
+    return [isVisible, hasAnimated]; // Return both visibility and animation states
 }

@@ -106,4 +106,8 @@
         opacity: 1;
         transform: translateY(0); /* to the original position */
     }
-} 
+}
+.hidden {
+    opacity: 0; /* Ensure it is hidden or doesn't show before animation */
+    transform: translateY(100px); /* Adjust according to your needs */
+}
