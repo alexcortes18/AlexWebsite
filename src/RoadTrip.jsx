@@ -16,10 +16,9 @@ const roads = [
 
 function Rider({ riderRef }) {
   return <g ref={riderRef} transform="translate(110 403)">
-    <ellipse cx="0" cy="10" rx="53" ry="9" fill="#20332c" opacity=".16" />
-    <svg x="-51" y="-109" width="104" height="114" viewBox="145 209 480 555" overflow="visible">
-      <defs><clipPath id="rider-photo-outline"><path d="M276 246Q279 214 306 214Q332 214 338 240L338 278 352 300 380 331 405 351 445 381 448 355 455 327 469 331 460 380 481 383 504 410 505 443 550 492 593 548 602 597 623 630 624 701 604 744 568 761 513 753 481 730 464 697 432 688 402 663 373 643 335 617 311 619 304 682 322 722 321 745 303 751 282 737 265 704 264 675 268 624 224 600 185 574 157 544 153 519 180 505 177 451 170 417 182 406 233 406 237 349 242 322 278 298Z"/></clipPath></defs>
-      <image href="/frames/helmet-ride.webp" width="624" height="832" preserveAspectRatio="none" clipPath="url(#rider-photo-outline)" />
+    <ellipse cx="0" cy="4" rx="54" ry="8" fill="#20332c" opacity=".12" />
+    <svg x="-34" y="-141" width="160" height="154" viewBox="0 0 1280 1229" overflow="visible" aria-hidden="true">
+      <image href="/frames/rider-cutout.webp" width="1280" height="1229" preserveAspectRatio="none" />
     </svg>
   </g>
 }
