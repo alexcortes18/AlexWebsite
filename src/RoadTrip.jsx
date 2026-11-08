@@ -17,8 +17,8 @@ const roads = [
 function Rider({ riderRef }) {
   return <g ref={riderRef} transform="translate(110 403)">
     <ellipse cx="0" cy="4" rx="54" ry="8" fill="#20332c" opacity=".12" />
-    <svg x="-34" y="-141" width="160" height="154" viewBox="0 0 1280 1229" overflow="visible" aria-hidden="true">
-      <image href="/frames/rider-cutout.webp" width="1280" height="1229" preserveAspectRatio="none" />
+    <svg x="-28" y="-117" width="160" height="132" viewBox="0 0 1379 1141" overflow="visible" aria-hidden="true">
+      <image href="/frames/rider-cutout.webp" width="1379" height="1141" preserveAspectRatio="none" />
     </svg>
   </g>
 }
