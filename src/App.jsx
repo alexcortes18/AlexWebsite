@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, Route, Routes, useLocation, useParams } from 'react-router-dom'
 import { chapters, projects, photos, github, linkedin } from './portfolio'
+import RoadTrip from './RoadTrip.jsx'
 import resume from './assets/AlexCortesCV.pdf'
 import { coverLetter } from './data/coverletter'
 
@@ -29,22 +30,22 @@ function RoadMap({ mapRef }) {
 
 function Home({ openMap }) {
   return <>
-    <section className="hero">
-      <div className="hero-copy">
-        <p className="eyebrow"><span className="dot" /> Honduras → Taiwan</p>
-        <h1>Hi, I’m<br />Alex Cortés<span>.</span></h1>
-        <p className="lede">I started on factory floors in Honduras, found a second home in Taiwan, and now build things with data and machine learning.</p>
-        <button className="key-button" onClick={openMap}><Key /><span>Open the route map <span aria-hidden="true">↗</span></span></button>
+    <section className="departure">
+      <div className="departure-copy">
+        <p className="eyebrow">HONDURAS ↔ TAIWAN / EST. ON TWO WHEELS</p>
+        <h1>Alex<br />Cortés<span>.</span></h1>
+        <p>Engineer from Honduras. Taiwan became home, and somewhere along the way I picked up a camera, a 125 cc scooter, and a taste for working with data.</p>
+        <div className="departure-actions"><a href="#ride">Start the ride ↓</a><button onClick={openMap}><Key /> Pick a stop</button></div>
       </div>
-      <Link className="hero-photo" to="/photos/dongmen" aria-label="See the Dongmen Market photo"><Frame name="dongmen" caption="FRAME 01 / DONGMEN MARKET, TAIWAN" eager /></Link>
-    </section>
-    <section className="home-route" aria-label="Three stops on the journey">
-      <p className="eyebrow">The long way around / a few stops</p>
-      <div className="route-teasers">
-        {[[chapters[0], 'Where I started'], [chapters[2], 'Where I found a second home'], [chapters[5], 'What I build now']].map(([stop, label], i) => <Link key={stop.id} to={'/journey/' + stop.id}><span className="mile">0{i + 1}</span><strong>{['Honduras', 'NTHU, Taiwan', 'Today'][i]}</strong><small>{label}</small></Link>)}
+      <div className="departure-collage">
+        <span className="collage-mark" aria-hidden="true">✷</span>
+        <Link to="/photos/dongmen" className="departure-photo"><Frame name="dongmen" caption="01 / AFTER DARK IN DONGMEN" eager /></Link>
+        <Link to="/photos/coastal-road" className="scooter-photo"><Frame name="my-scooter" caption="THE LITTLE 125 CC" eager /></Link>
+        <span className="departure-label" aria-hidden="true">The long<br />way around!</span>
       </div>
-      <Link className="arrow-link" to="/journey">See the full journey →</Link>
     </section>
+    <RoadTrip />
+    <div className="ride-exits"><Link to="/journey">Read the full journey ↗</Link><Link to="/work">See what I’ve built ↗</Link><Link to="/photos">Open the photo rolls ↗</Link></div>
   </>
 }
 
@@ -136,16 +137,35 @@ function Project() {
 
 function Photos() {
   const [place, setPlace] = useState('All')
-  return <>
-    <PageHead label="04 / Photo archive" title="Things I noticed." intro="Scenes from home and places I’ve been, photographed along the way." />
+  const [index, setIndex] = useState(0)
+  const roll = photos.filter(([, , location]) => place === 'All' || location === place)
+  const [name, title, location] = roll[index]
+  function advance(direction) {
+    setIndex(current => (current + direction + roll.length) % roll.length)
+  }
+  return <section className="filmroom">
+    <PageHead label="04 / Photo archive" title="The photo rolls." intro="Pick a roll, then flip through the frames." />
+    <div className="filters" aria-label="Choose a photo roll">
+      {['All', 'Taiwan', 'Honduras', 'Japan'].map(item => <button key={item} onClick={() => { setPlace(item); setIndex(0) }} aria-pressed={place === item}>{item}</button>)}
+    </div>
+    <div className="film-viewer" onKeyDown={event => {
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        event.preventDefault()
+        advance(event.key === 'ArrowLeft' ? -1 : 1)
+      }
+    }}>
+      <div className="film-projection">
+        <button onClick={() => advance(-1)} aria-label="Previous frame" disabled={roll.length < 2}>←</button>
+        <Link to={'/photos/' + name}><Frame key={name} name={name} caption={title + ' / ' + location} eager /></Link>
+        <button onClick={() => advance(1)} aria-label="Next frame" disabled={roll.length < 2}>→</button>
+      </div>
+      <p className="film-count" aria-live="polite">FRAME {String(index + 1).padStart(2, '0')} / {String(roll.length).padStart(2, '0')} · {title}</p>
+      <div className="filmstrip" aria-label="Select a frame">
+        {roll.map(([frame, label], i) => <button type="button" key={frame} aria-label={label} aria-pressed={i === index} onClick={() => setIndex(i)}><img src={'/frames/' + frame + '.webp'} alt="" loading="lazy" /><span>{String(i + 1).padStart(2, '0')}</span></button>)}
+      </div>
+    </div>
     <Link className="next" to="/photos/coastal-road">Photo story <strong>Take the coastal road →</strong></Link>
-    <div className="filters" aria-label="Filter by place">
-      {['All', 'Taiwan', 'Honduras', 'Japan'].map(item => <button key={item} onClick={() => setPlace(item)} aria-pressed={place === item}>{item}</button>)}
-    </div>
-    <div className="photo-grid">
-      {photos.filter(([, , location]) => place === 'All' || location === place).map(([name, title, location]) => <Link key={name} to={'/photos/' + name}><Frame name={name} caption={title + ' / ' + location} /></Link>)}
-    </div>
-  </>
+  </section>
 }
 
 function PhotoStory() {
@@ -159,7 +179,7 @@ function PhotoStory() {
       <div className="chapter-image"><Frame name={photo[0]} caption={photo[1]} eager /></div>
     </> : <>
       <PageHead label="A detour / Taiwan" title="Take the coastal road." intro="More than 800 km solo along Taiwan’s west coast on a 125 cc scooter, with plenty of stops by the water." />
-      <div className="chapter-image"><Frame name="kenting" caption="From my Taiwan coastal photo archive" eager /></div>
+      <iframe className="ride-instagram" title="Alex’s original Taiwan west coast scooter ride photos on Instagram" src="https://www.instagram.com/p/DFhi--2v343WadFxZuvkZBSU_nOr89DyBbIw7Y0/embed/" loading="lazy" />
       <p className="reading"><a className="arrow-link" href="https://www.instagram.com/alexjcortes10/p/DFhi--2v343WadFxZuvkZBSU_nOr89DyBbIw7Y0/">See the original ride photos on Instagram ↗</a></p>
     </>}
   </>
