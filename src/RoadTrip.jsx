@@ -1,11 +1,10 @@
-import portrait from './assets/Alex_dark_blue.jpg'
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const stops = [
   { title: 'Honduras', note: 'Home, mechatronics, and the factory floor.', to: '/journey/honduras', frame: 'falls', x: 110, y: 403, color: '#dce78e' },
   { title: 'Hsinchu', note: 'A new home, a master’s at NTHU, and a summer at IBM.', to: '/journey/nthu', frame: 'dorm_view', x: 339, y: 216, color: '#ffd48a' },
-  { title: 'Taiwan’s coast', note: 'A little 125 cc scooter and more than 800 km on the west coast.', to: '/photos/coastal-road', frame: 'kenting', x: 584, y: 337, color: '#f4a992' },
+  { title: 'Taiwan’s coast', note: 'A little 125 cc scooter and more than 800 km on the west coast.', to: '/photos/coastal-road', frame: 'ig-coast', x: 584, y: 337, color: '#f4a992' },
   { title: 'Today', note: 'Power BI, clinical machine learning, RAG, and a SQL agent.', to: '/work', frame: 'lab', x: 778, y: 143, color: '#c8bff2' },
 ]
 
@@ -18,22 +17,10 @@ const roads = [
 function Rider({ riderRef }) {
   return <g ref={riderRef} transform="translate(110 403)">
     <ellipse cx="0" cy="10" rx="53" ry="9" fill="#20332c" opacity=".16" />
-    <g stroke="#242722" strokeWidth="3.6" strokeLinejoin="round" strokeLinecap="round">
-      <circle cx="-31" cy="-2" r="12" fill="#242722" /><circle cx="34" cy="-2" r="12" fill="#242722" />
-      <circle cx="-31" cy="-2" r="4" fill="#e4d9bc" /><circle cx="34" cy="-2" r="4" fill="#e4d9bc" />
-      <path d="M-44-17Q-44-37-19-39L-4-34 1-16 18-16 22-37 16-52 31-54 42-22 45-13 31-12 19-8-22-8Z" fill="#dce2db" />
-      <path d="M-43-33Q-29-42-6-36L1-31H-38Z" fill="#303a36" />
-      <path d="M21-49 16-59 10-59M27-56 34-66 41-66" fill="none" />
-      <path d="M31-48 38-31 31-31 26-46Z" fill="#ffe47b" />
-      <path d="M-21-57-8-48 6-43 2-23 13-19 11-14H-5L-11-34-29-39Z" fill="#355b68" />
-      <path d="M-24-74Q-8-82-4-62L-12-47-30-48-31-57Z" fill="#df664b" />
-      <path d="M-17-67-5-62 13-61 16-56-4-54-19-59" fill="#f5a66c" />
-      <defs><clipPath id="rider-face"><ellipse cx="-14" cy="-82" rx="13" ry="15" /></clipPath></defs>
-      <image href={portrait} x="-38" y="-106" width="48" height="51" preserveAspectRatio="xMidYMid slice" clipPath="url(#rider-face)" />
-      <ellipse cx="-14" cy="-82" rx="13" ry="15" fill="none" />
-      <path d="M-29-81Q-37-95-25-102-8-109-1-91L-1-86-19-87-22-79Z" fill="#fbe279" />
-      <path d="M-31-72Q-45-75-46-57L-42-44-29-47Z" fill="#5b7c57" />
-    </g>
+    <svg x="-51" y="-109" width="104" height="114" viewBox="145 209 480 555" overflow="visible">
+      <defs><clipPath id="rider-photo-outline"><path d="M276 246Q279 214 306 214Q332 214 338 240L338 278 352 300 380 331 405 351 445 381 448 355 455 327 469 331 460 380 481 383 504 410 505 443 550 492 593 548 602 597 623 630 624 701 604 744 568 761 513 753 481 730 464 697 432 688 402 663 373 643 335 617 311 619 304 682 322 722 321 745 303 751 282 737 265 704 264 675 268 624 224 600 185 574 157 544 153 519 180 505 177 451 170 417 182 406 233 406 237 349 242 322 278 298Z"/></clipPath></defs>
+      <image href="/frames/helmet-ride.webp" width="624" height="832" preserveAspectRatio="none" clipPath="url(#rider-photo-outline)" />
+    </svg>
   </g>
 }
 
@@ -92,7 +79,7 @@ export default function RoadTrip() {
   const stop = stops[active]
   return <section className="ride" ref={tripRef} id="ride" aria-label="Ride through Alex’s story">
     <div className="ride-stage" style={{ '--stop-color': stop.color }}>
-      <div className="ride-top"><span>FIELD MAP / 01</span><span>SCROLL TO RIDE ↓</span></div>
+      <div className="ride-top"><span>The ride</span><span>SCROLL TO RIDE ↓</span></div>
       <div className="atlas">
         <svg viewBox="0 0 900 510" role="img" aria-label="Illustrated route through Honduras, Taiwan, and Alex’s current work">
           <defs><pattern id="atlas-grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M0 30V0H30" fill="none" stroke="#355b68" strokeOpacity=".17" /></pattern></defs>
@@ -115,11 +102,11 @@ export default function RoadTrip() {
         </svg>
         <article className="ride-ticket">
           <img src={'/frames/' + stop.frame + '.webp'} alt="" />
-          <div><span className="eyebrow">STOP 0{active + 1} / 04</span><h2>{stop.title}</h2><p>{stop.note}</p><Link to={stop.to}>Pull over here ↗</Link></div>
+          <div><span className="eyebrow">Along the way</span><h2>{stop.title}</h2><p>{stop.note}</p><Link to={stop.to}>Pull over here ↗</Link></div>
         </article>
       </div>
       <nav className="ride-dial" aria-label="Jump to a ride stop">
-        {stops.map(({ title }, i) => <button key={title} type="button" onClick={() => goTo(i)} aria-current={active === i ? 'step' : undefined}><span>0{i + 1}</span>{title}</button>)}
+        {stops.map(({ title }, i) => <button key={title} type="button" onClick={() => goTo(i)} aria-current={active === i ? 'step' : undefined}>{title}</button>)}
       </nav>
     </div>
   </section>

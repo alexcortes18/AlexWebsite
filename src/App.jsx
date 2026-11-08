@@ -40,7 +40,7 @@ function Home({ openMap }) {
       <div className="departure-collage">
         <span className="collage-mark" aria-hidden="true">✷</span>
         <Link to="/photos/dongmen" className="departure-photo"><Frame name="dongmen" caption="01 / AFTER DARK IN DONGMEN" eager /></Link>
-        <Link to="/photos/coastal-road" className="scooter-photo"><Frame name="my-scooter" caption="THE LITTLE 125 CC" eager /></Link>
+        <Link to="/photos/coastal-road" className="scooter-photo"><Frame name="helmet-ride" caption="ON TWO WHEELS" eager /></Link>
         <Link to="/journey/nthu" className="collage-extra collage-campus"><Frame name="dorm_view" caption="HSINCHU" eager /></Link>
         <Link to="/photos/falls" className="collage-extra collage-home"><Frame name="falls" caption="HONDURAS" eager /></Link>
         <span className="departure-label" aria-hidden="true">The long<br />way around!</span>
@@ -49,10 +49,10 @@ function Home({ openMap }) {
     <RoadTrip />
     <div className="after-ride">
       {[
-        ['01 / The places', 'The full journey', 'From the factory floor in Honduras to a new home in Taiwan.', '/journey', 'dorm_view', '#ffd48a'],
-        ['02 / The projects', 'Things I’ve built', 'Industrial controls, Power BI, clinical ML, and tools for asking better questions.', '/work', 'controlPanel', '#f4a992'],
-        ['03 / Try it yourself', 'The AI Lab', 'Move a model’s cutoff, inspect retrieved sources, or follow a question into SQL.', '/lab', 'lab', '#c8bff2'],
-        ['04 / The archive', 'The photo rolls', 'Thirty frames from markets, mountains, coastlines, and the roads between them.', '/photos', 'archive-19', '#a5c8c2'],
+        ['The places', 'The full journey', 'From the factory floor in Honduras to a new home in Taiwan.', '/journey', 'dorm_view', '#ffd48a'],
+        ['The projects', 'Things I’ve built', 'Industrial controls, Power BI, clinical ML, and tools for asking better questions.', '/work', 'controlPanel', '#f4a992'],
+        ['Try it yourself', 'The AI Lab', 'Move a model’s cutoff, inspect retrieved sources, or follow a question into SQL.', '/lab', 'lab', '#c8bff2'],
+        ['The archive', 'The photo rolls', 'Thirty frames from markets, mountains, coastlines, and the roads between them.', '/photos', 'archive-19', '#a5c8c2'],
       ].map(([label, title, copy, to, frame, color]) => <section key={to} style={{ background: color }}>
         <Link to={to}><div><p className="eyebrow">{label}</p><h2>{title}</h2><p>{copy}</p><strong>Explore ↗</strong></div><img src={'/frames/' + frame + '.webp'} alt="" loading="lazy" /></Link>
       </section>)}
@@ -88,7 +88,7 @@ function Journey() {
     }
   }, [])
   return <>
-    <PageHead label="01 / The long way around" title="The journey." intro="Six stops, from Honduras to Taiwan and into the work I do today." />
+    <PageHead label="The long way around" title="The journey." intro="Six stops, from Honduras to Taiwan and into the work I do today." />
     <ol className="journey" ref={routeRef}>
       {chapters.map((chapter, i) => <li key={chapter.id}>
         <span className="mile">0{i + 1}</span>
@@ -125,7 +125,7 @@ function Chapter() {
 
 function Work() {
   return <>
-    <PageHead label="02 / Selected work" title="Things I’ve built." intro="From industrial controls to reporting, clinical machine learning, and tools that help people ask questions of their data." />
+    <PageHead label="Selected work" title="Things I’ve built." intro="From industrial controls to reporting, clinical machine learning, and tools that help people ask questions of their data." />
     <div className="project-list">
       {projects.map((project, i) => <Link key={project.id} to={'/work/' + project.id}><span className="eyebrow">0{i + 1} / {project.area}</span><div><h2>{project.title}</h2><p>{project.intro}</p></div><span aria-hidden="true">↗</span></Link>)}
     </div>
@@ -155,7 +155,7 @@ function Photos() {
     setIndex(current => (current + direction + roll.length) % roll.length)
   }
   return <section className="filmroom">
-    <PageHead label="04 / Photo archive" title="The photo rolls." intro="Pick a roll, then flip through the frames." />
+    <PageHead label="Photo archive" title="The photo rolls." intro="Pick a roll, then flip through the frames." />
     <div className="filters" aria-label="Choose a photo roll">
       {['All', ...new Set(photos.map(([, , country]) => country))].map(item => <button key={item} onClick={() => { setPlace(item); setIndex(0) }} aria-pressed={place === item}>{item}</button>)}
     </div>
@@ -190,8 +190,7 @@ function PhotoStory() {
       <div className="chapter-image"><Frame name={photo[0]} caption={photo[1]} eager /></div>
     </> : <>
       <PageHead label="A detour / Taiwan" title="Take the coastal road." intro="More than 800 km solo along Taiwan’s west coast on a 125 cc scooter, with plenty of stops by the water." />
-      <iframe className="ride-instagram" title="Alex’s original Taiwan west coast scooter ride photos on Instagram" src="https://www.instagram.com/p/DFhi--2v343WadFxZuvkZBSU_nOr89DyBbIw7Y0/embed/" loading="lazy" />
-      <p className="reading"><a className="arrow-link" href="https://www.instagram.com/alexjcortes10/p/DFhi--2v343WadFxZuvkZBSU_nOr89DyBbIw7Y0/">See the original ride photos on Instagram ↗</a></p>
+      <div className="chapter-image"><Frame name="ig-coast" caption="Taiwan’s west coast, from my scooter ride" eager /></div>
     </>}
   </>
 }
@@ -214,7 +213,7 @@ function Lab() {
   })).filter(match => match.score > 0).sort((a, b) => b.score - a.score).slice(0, 3)
   const candidates = sampleCodes.filter(([, score]) => score >= threshold)
   return <>
-    <PageHead label="03 / Experiments" title="AI Lab." intro="Small examples of the ideas behind my clinical ML, retrieval, and SQL agent work." />
+    <PageHead label="Experiments" title="AI Lab." intro="Small examples of the ideas behind my clinical ML, retrieval, and SQL agent work." />
     <section className="lab-panel" id="threshold">
       <p className="eyebrow">01 / Synthetic example</p><h2>Where do you set the cutoff?</h2>
       <p>Lowering the cutoff puts more candidate procedure codes in front of the reviewer. Try moving it.</p>

@@ -217,3 +217,11 @@ body { background: #e5ecd4; }
 .after-ride img { aspect-ratio:1.55; object-fit:cover; border:6px solid #fff7e4; box-shadow:4px 4px #24362b; transform:rotate(2deg); }
 .after-ride a:hover img { transform:rotate(0); }
 @media(max-width:650px) { .after-ride a { grid-template-columns:1fr; } }
+
+.departure, .ride, .after-ride { margin-inline: calc((100% - 100vw) / 2); }
+.departure { margin-block: 0; border: 0; padding-inline: max(4vw, calc((100vw - 1200px) / 2)); }
+.ride-stage { border: 0; padding-inline: max(4vw, calc((100vw - 1320px) / 2)); }
+.after-ride { gap: 0; margin-top: 0; }
+.after-ride section { border: 0; }
+.after-ride a { max-width: 1320px; margin-inline: auto; }
+.scooter-photo img { aspect-ratio: 1.25; object-fit: cover; object-position: center 65%; }
