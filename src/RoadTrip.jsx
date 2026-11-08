@@ -1,3 +1,4 @@
+import portrait from './assets/Alex_dark_blue.jpg'
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -27,9 +28,10 @@ function Rider({ riderRef }) {
       <path d="M-21-57-8-48 6-43 2-23 13-19 11-14H-5L-11-34-29-39Z" fill="#355b68" />
       <path d="M-24-74Q-8-82-4-62L-12-47-30-48-31-57Z" fill="#df664b" />
       <path d="M-17-67-5-62 13-61 16-56-4-54-19-59" fill="#f5a66c" />
-      <path d="M-26-91Q-8-99-4-85L-6-77Q-12-69-21-75L-26-81Z" fill="#f4a66f" />
+      <defs><clipPath id="rider-face"><ellipse cx="-14" cy="-82" rx="13" ry="15" /></clipPath></defs>
+      <image href={portrait} x="-38" y="-106" width="48" height="51" preserveAspectRatio="xMidYMid slice" clipPath="url(#rider-face)" />
+      <ellipse cx="-14" cy="-82" rx="13" ry="15" fill="none" />
       <path d="M-29-81Q-37-95-25-102-8-109-1-91L-1-86-19-87-22-79Z" fill="#fbe279" />
-      <path d="M-11-82h1M-12-77q2 2 5 0" fill="none" strokeWidth="1.8" />
       <path d="M-31-72Q-45-75-46-57L-42-44-29-47Z" fill="#5b7c57" />
     </g>
   </g>

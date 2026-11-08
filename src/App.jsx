@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, NavLink, Route, Routes, useLocation, useParams } from 'react-router-dom'
+import { Link, Route, Routes, useLocation, useParams } from 'react-router-dom'
 import { chapters, projects, photos, github, linkedin } from './portfolio'
 import RoadTrip from './RoadTrip.jsx'
 import resume from './assets/AlexCortesCV.pdf'
@@ -41,11 +41,22 @@ function Home({ openMap }) {
         <span className="collage-mark" aria-hidden="true">✷</span>
         <Link to="/photos/dongmen" className="departure-photo"><Frame name="dongmen" caption="01 / AFTER DARK IN DONGMEN" eager /></Link>
         <Link to="/photos/coastal-road" className="scooter-photo"><Frame name="my-scooter" caption="THE LITTLE 125 CC" eager /></Link>
+        <Link to="/journey/nthu" className="collage-extra collage-campus"><Frame name="dorm_view" caption="HSINCHU" eager /></Link>
+        <Link to="/photos/falls" className="collage-extra collage-home"><Frame name="falls" caption="HONDURAS" eager /></Link>
         <span className="departure-label" aria-hidden="true">The long<br />way around!</span>
       </div>
     </section>
     <RoadTrip />
-    <div className="ride-exits"><Link to="/journey">Read the full journey ↗</Link><Link to="/work">See what I’ve built ↗</Link><Link to="/photos">Open the photo rolls ↗</Link></div>
+    <div className="after-ride">
+      {[
+        ['01 / The places', 'The full journey', 'From the factory floor in Honduras to a new home in Taiwan.', '/journey', 'dorm_view', '#ffd48a'],
+        ['02 / The projects', 'Things I’ve built', 'Industrial controls, Power BI, clinical ML, and tools for asking better questions.', '/work', 'controlPanel', '#f4a992'],
+        ['03 / Try it yourself', 'The AI Lab', 'Move a model’s cutoff, inspect retrieved sources, or follow a question into SQL.', '/lab', 'lab', '#c8bff2'],
+        ['04 / The archive', 'The photo rolls', 'Thirty frames from markets, mountains, coastlines, and the roads between them.', '/photos', 'archive-19', '#a5c8c2'],
+      ].map(([label, title, copy, to, frame, color]) => <section key={to} style={{ background: color }}>
+        <Link to={to}><div><p className="eyebrow">{label}</p><h2>{title}</h2><p>{copy}</p><strong>Explore ↗</strong></div><img src={'/frames/' + frame + '.webp'} alt="" loading="lazy" /></Link>
+      </section>)}
+    </div>
   </>
 }
 
@@ -146,7 +157,7 @@ function Photos() {
   return <section className="filmroom">
     <PageHead label="04 / Photo archive" title="The photo rolls." intro="Pick a roll, then flip through the frames." />
     <div className="filters" aria-label="Choose a photo roll">
-      {['All', 'Taiwan', 'Honduras', 'Japan'].map(item => <button key={item} onClick={() => { setPlace(item); setIndex(0) }} aria-pressed={place === item}>{item}</button>)}
+      {['All', ...new Set(photos.map(([, , country]) => country))].map(item => <button key={item} onClick={() => { setPlace(item); setIndex(0) }} aria-pressed={place === item}>{item}</button>)}
     </div>
     <div className="film-viewer" onKeyDown={event => {
       if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
@@ -246,7 +257,6 @@ export default function App() {
     <a href="#content" className="skip">Skip to content</a>
     <header className="site-header">
       <Link className="wordmark" to="/">Alex Cortés<span>.</span><small>The long way around</small></Link>
-      <nav aria-label="Main navigation">{destinations.map(([path, title]) => <NavLink key={path} to={path}>{title}</NavLink>)}</nav>
       <button className="map-trigger" onClick={openMap} aria-label="Open route map"><Key /></button>
     </header>
     <RoadMap mapRef={mapRef} />

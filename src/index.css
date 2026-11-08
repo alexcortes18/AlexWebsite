@@ -202,3 +202,18 @@ body { background: #e5ecd4; }
 @media (prefers-reduced-motion: reduce) {
   .ride-stage, .departure-photo, .scooter-photo { transition: none; }
 }
+
+.site-header { display: flex; justify-content: space-between; }
+.collage-extra { position:absolute; display:block; width:26%; padding:.35rem; border:2px solid #24362b; background:#fff7e4; box-shadow:3px 4px #24362b; text-decoration:none; }
+.collage-extra img { aspect-ratio:1.35; object-fit:cover; }
+.collage-extra figcaption { font-size:.57rem; }
+.collage-campus { top:0; left:0; transform:rotate(-9deg); }
+.collage-home { right:0; bottom:26%; transform:rotate(9deg); }
+.after-ride { display:grid; gap:1.5rem; margin-top:2rem; }
+.after-ride section { border:2px solid #24362b; }
+.after-ride a { display:grid; grid-template-columns:1fr 1fr; gap:clamp(1rem,4vw,4rem); align-items:center; padding:clamp(1.25rem,5vw,4rem); text-decoration:none; }
+.after-ride h2 { margin:.5rem 0; font:italic 800 clamp(2.4rem,6vw,5.5rem)/.95 Georgia,serif; }
+.after-ride strong { display:inline-block; margin-top:1rem; text-decoration:underline; }
+.after-ride img { aspect-ratio:1.55; object-fit:cover; border:6px solid #fff7e4; box-shadow:4px 4px #24362b; transform:rotate(2deg); }
+.after-ride a:hover img { transform:rotate(0); }
+@media(max-width:650px) { .after-ride a { grid-template-columns:1fr; } }
