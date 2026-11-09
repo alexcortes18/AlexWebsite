@@ -22,7 +22,7 @@ function Home() {
               <option value="hsinchu-masters">Hsinchu · start the master’s</option>
               <option value="taipei-ibm">Taipei · IBM</option>
               <option value="hsinchu-finish">Hsinchu · finish the master’s</option>
-              <option value="honduras-work">Honduras · Moxland</option>
+              <option value="honduras-work">Honduras · MoxieLink</option>
             </select>
           </label>
         </div>
