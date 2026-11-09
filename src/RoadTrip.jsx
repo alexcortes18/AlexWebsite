@@ -1,60 +1,48 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
 
 const stops = [
-  { title: 'Honduras', note: 'Home, mechatronics, and the factory floor.', to: '/journey/honduras', frame: 'falls', x: 110, y: 403, color: '#dce78e' },
-  { title: 'Hsinchu', note: 'A new home, a master’s at NTHU, and a summer at IBM.', to: '/journey/nthu', frame: 'dorm_view', x: 339, y: 216, color: '#ffd48a' },
-  { title: 'Taiwan’s coast', note: 'A little 125 cc scooter and more than 800 km on the west coast.', to: '/photos/coastal-road', frame: 'ig-coast', x: 584, y: 337, color: '#f4a992' },
-  { title: 'Today', note: 'Power BI, clinical machine learning, RAG, and a SQL agent.', to: '/work', frame: 'lab', x: 778, y: 143, color: '#c8bff2' },
+  { id: 'honduras-start', title: 'Honduras', place: 'Choluteca · first chapter', note: 'Mechatronics, industrial automation, and learning how real systems behave outside the classroom.', frame: 'controlPanel', color: '#dce78e', x: 172, y: 85 },
+  { id: 'hsinchu-masters', title: 'Hsinchu', place: 'NTHU · the master’s years', note: 'A new home, a new language around data, and the beginning of my life in Taiwan.', frame: 'dorm_view', color: '#ffd48a', x: 303, y: 256 },
+  { id: 'taipei-ibm', title: 'Taipei', place: 'IBM · a first industry chapter', note: 'Taking what I learned at NTHU into a fast-moving team and seeing data work at a different scale.', frame: 'taipei1', color: '#f4a992', x: 315, y: 185 },
+  { id: 'hsinchu-finish', title: 'Hsinchu', place: 'NTHU · bringing it home', note: 'Finishing the master’s, building research experience, and connecting engineering with applied AI.', frame: 'Oral_defense', color: '#c8bff2', x: 303, y: 625 },
+  { id: 'honduras-work', title: 'Honduras', place: 'Moxland · back to build', note: 'Returning with a wider toolkit: analytics, machine learning, RAG, and a practical engineering mindset.', frame: 'green_meters', color: '#a5c8c2', x: 45, y: 438 },
 ]
 
-const roads = [
-  'M110 403 C168 480 288 424 235 351 S205 240 339 216',
-  'M339 216 C446 184 482 212 451 277 S470 391 584 337',
-  'M584 337 C661 301 617 257 666 219 S778 216 778 143',
-]
+const route = 'M172 85 C284 122 206 209 303 256 C386 230 361 164 315 185 C268 207 250 308 303 256 C238 330 205 400 45 438'
 
 function Rider({ riderRef }) {
-  return <g ref={riderRef} transform="translate(110 403)">
-    <ellipse cx="0" cy="4" rx="54" ry="8" fill="#20332c" opacity=".12" />
-    <svg x="-28" y="-117" width="160" height="132" viewBox="0 0 1379 1141" overflow="visible" aria-hidden="true">
+  return <g ref={riderRef} transform="translate(172 85)">
+    <ellipse cx="0" cy="4" rx="48" ry="7" fill="#20332c" opacity=".14" />
+    <svg x="-26" y="-106" width="144" height="119" viewBox="0 0 1379 1141" overflow="visible" aria-hidden="true">
       <image href="/frames/rider-cutout.webp" width="1379" height="1141" preserveAspectRatio="none" />
     </svg>
   </g>
 }
 
 export default function RoadTrip() {
-  const tripRef = useRef(null)
-  const pathRefs = useRef([])
+  const sectionRef = useRef(null)
+  const pathRef = useRef(null)
   const riderRef = useRef(null)
   const [active, setActive] = useState(0)
 
   useEffect(() => {
-    const trip = tripRef.current
+    const section = sectionRef.current
+    const path = pathRef.current
     const rider = riderRef.current
-    const paths = pathRefs.current
-    const lengths = paths.map(path => path.getTotalLength())
+    const length = path.getTotalLength()
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)')
     let frame = 0
-
     function draw() {
-      const distance = Math.max(1, trip.offsetHeight - window.innerHeight)
-      const progress = Math.min(1, Math.max(0, -trip.getBoundingClientRect().top / distance)) * roads.length
-      const index = Math.min(roads.length - 1, Math.floor(progress))
-      const stop = Math.round(progress)
-      const point = reduced.matches ? stops[stop] : paths[index].getPointAtLength((progress - index) * lengths[index])
-      rider.setAttribute('transform', 'translate(' + point.x + ' ' + point.y + ')')
-      paths.forEach((path, i) => {
-        path.style.strokeDasharray = lengths[i]
-        path.style.strokeDashoffset = lengths[i] * (1 - Math.min(1, Math.max(0, progress - i)))
-      })
-      setActive(stop)
+      const distance = Math.max(1, section.offsetHeight - window.innerHeight)
+      const progress = Math.min(1, Math.max(0, -section.getBoundingClientRect().top / distance))
+      const point = reduced.matches ? stops[Math.min(stops.length - 1, Math.round(progress * (stops.length - 1)))] : path.getPointAtLength(progress * length)
+      rider.setAttribute('transform', `translate(${point.x} ${point.y})`)
+      path.style.strokeDasharray = length
+      path.style.strokeDashoffset = length * (1 - progress)
+      setActive(Math.min(stops.length - 1, Math.round(progress * (stops.length - 1))))
       frame = 0
     }
-
-    function schedule() {
-      if (!frame) frame = requestAnimationFrame(draw)
-    }
+    function schedule() { if (!frame) frame = requestAnimationFrame(draw) }
     draw()
     window.addEventListener('scroll', schedule, { passive: true })
     window.addEventListener('resize', schedule)
@@ -67,46 +55,37 @@ export default function RoadTrip() {
     }
   }, [])
 
-  function goTo(index) {
-    const trip = tripRef.current
-    window.scrollTo({
-      top: window.scrollY + trip.getBoundingClientRect().top + (trip.offsetHeight - window.innerHeight) * index / roads.length,
-      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
-    })
+  function jumpTo(index) {
+    document.getElementById(stops[index].id)?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'center' })
   }
 
-  const stop = stops[active]
-  return <section className="ride" ref={tripRef} id="ride" aria-label="Ride through Alex’s story">
-    <div className="ride-stage" style={{ '--stop-color': stop.color }}>
-      <div className="ride-top"><span>The ride</span><span>SCROLL TO RIDE ↓</span></div>
-      <div className="atlas">
-        <svg viewBox="0 0 900 510" role="img" aria-label="Illustrated route through Honduras, Taiwan, and Alex’s current work">
-          <defs><pattern id="atlas-grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M0 30V0H30" fill="none" stroke="#355b68" strokeOpacity=".17" /></pattern></defs>
-          <rect width="900" height="510" fill="#a5c8c2" /><rect width="900" height="510" fill="url(#atlas-grid)" />
-          <path d="M0 146 57 165 96 144 143 161 173 194 205 196 246 222 259 258 232 300 235 352 194 376 172 429 131 437 99 472 0 465Z" fill="#c6d784" stroke="#506b4f" strokeWidth="3" />
-          <path d="M425 83Q451 56 469 78T467 144Q452 177 439 209T392 263Q367 270 362 240T381 170Q391 121 425 83Z" fill="#dfdf94" stroke="#506b4f" strokeWidth="3" />
-          <path d="M709 268Q774 221 900 245V510H617Q600 472 636 422T709 268Z" fill="#e1bb7c" stroke="#8c7150" strokeWidth="3" />
-          <g fill="none" stroke="#526b57" strokeWidth="3" strokeLinecap="round">
-            <path d="m24 238 24-30 23 28 22-30 29 33m-85 80 15-19 18 19m333-162 15-25 12 19 15-24 14 25m294 222 29-35 20 25 19-29 24 29"/>
-            <path d="M278 117q15-9 30 0t30 0m-75 24q15-9 30 0t30 0m240-37q15-9 30 0t30 0m-64 23q15-9 30 0t30 0m-271 289q15-9 30 0t30 0" opacity=".6"/>
-          </g>
-          <g fill="#29463b" fontFamily="monospace" fontSize="18" fontWeight="bold" letterSpacing="3">
-            <text x="22" y="184">HONDURAS</text><text x="374" y="63">TAIWAN</text><text x="697" y="105">TODAY</text>
-          </g>
-          {roads.map(d => <path key={d} d={d} fill="none" stroke="#fbf2d8" strokeWidth="21" strokeLinecap="round" />)}
-          {roads.map((d, i) => <path key={d} ref={el => { pathRefs.current[i] = el }} d={d} fill="none" stroke="#b84735" strokeWidth="5" strokeLinecap="round" />)}
-          {stops.map(({ x, y, title }, i) => <circle key={title} cx={x} cy={y} r="9" fill={active === i ? '#fbe279' : '#fff5dc'} stroke="#24372e" strokeWidth="3" />)}
-          <Rider riderRef={riderRef} />
-          <g transform="translate(825 419)" fill="none" stroke="#284b45" strokeWidth="2"><circle r="27" /><path d="M0-20 7 9 0 3-7 9Z" fill="#284b45" /></g>
-        </svg>
-        <article className="ride-ticket">
-          <img src={'/frames/' + stop.frame + '.webp'} alt="" />
-          <div><span className="eyebrow">Along the way</span><h2>{stop.title}</h2><p>{stop.note}</p><Link to={stop.to}>Pull over here ↗</Link></div>
-        </article>
+  return <section className="ride" ref={sectionRef} id="ride" aria-label="Alex’s journey from Honduras to Taiwan and back">
+    <div className="ride-stage" style={{ '--stop-color': stops[active].color }}>
+      <div className="ride-top"><span>A road shaped by a few detours</span><span>KEEP SCROLLING ↓</span></div>
+      <div className="vertical-route">
+        <div className="route-map">
+          <svg viewBox="0 0 450 900" role="img" aria-label="A vertical illustrated route connecting five chapters in Honduras and Taiwan">
+            <defs><pattern id="atlas-grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M0 30V0H30" fill="none" stroke="#355b68" strokeOpacity=".17" /></pattern></defs>
+            <rect width="450" height="900" fill="#a5c8c2" /><rect width="450" height="900" fill="url(#atlas-grid)" />
+            <path d="M0 26 68 47 95 35 138 61 168 92 153 140 124 180 143 223 123 279 93 307 117 359 78 410 52 473 0 468Z" fill="#c6d784" stroke="#506b4f" strokeWidth="3" />
+            <path d="M278 177Q312 151 334 178T327 243Q306 276 295 309T249 353Q223 356 220 327T239 257Q245 208 278 177Z" fill="#dfdf94" stroke="#506b4f" strokeWidth="3" />
+            <path d="M337 423Q371 399 450 419V900H305Q291 864 314 809T337 423Z" fill="#e1bb7c" stroke="#8c7150" strokeWidth="3" />
+            <g fill="#29463b" fontFamily="monospace" fontSize="15" fontWeight="bold" letterSpacing="2"><text x="14" y="58">HONDURAS</text><text x="257" y="161">TAIWAN</text><text x="319" y="163">TAIPEI</text><text x="226" y="300">HSINCHU</text></g>
+            <path d={route} fill="none" stroke="#fbf2d8" strokeWidth="21" strokeLinecap="round" />
+            <path ref={pathRef} d={route} fill="none" stroke="#b84735" strokeWidth="5" strokeLinecap="round" />
+            {stops.map(({ x, y, title, id }, index) => <g key={id} onClick={() => jumpTo(index)} role="button" tabIndex="0" aria-label={`Go to ${title}, stop ${index + 1}`} onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') jumpTo(index) }} style={{ cursor: 'pointer' }}><circle cx={x} cy={y} r="15" fill={active === index ? '#fbe279' : '#fff5dc'} stroke="#24372e" strokeWidth="3" /><circle cx={x} cy={y} r="4" fill="#b84735" /></g>)}
+            <Rider riderRef={riderRef} />
+          </svg>
+        </div>
+        <ol className="route-stories">
+          {stops.map(({ id, title, place, note, frame, color }, index) => <li id={id} key={id} className={active === index ? 'is-active' : ''} style={{ '--chapter-color': color }}>
+            <button type="button" className="chapter-select" onClick={() => jumpTo(index)} aria-current={active === index ? 'step' : undefined}>
+              <img src={`/frames/${frame}.webp`} alt="" loading={index < 2 ? 'eager' : 'lazy'} />
+              <span><small>{place}</small><strong>{title}</strong><em>{note}</em></span>
+            </button>
+          </li>)}
+        </ol>
       </div>
-      <nav className="ride-dial" aria-label="Jump to a ride stop">
-        {stops.map(({ title }, i) => <button key={title} type="button" onClick={() => goTo(i)} aria-current={active === i ? 'step' : undefined}>{title}</button>)}
-      </nav>
     </div>
   </section>
 }

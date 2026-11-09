@@ -209,6 +209,7 @@ body { background: #e5ecd4; }
 .collage-extra figcaption { font-size:.57rem; }
 .collage-campus { top:0; left:0; transform:rotate(-9deg); }
 .collage-home { right:0; bottom:26%; transform:rotate(9deg); }
+.collage-coast { right:3%; top:34%; transform:rotate(-5deg); }
 .after-ride { display:grid; gap:1.5rem; margin-top:2rem; }
 .after-ride section { border:2px solid #24362b; }
 .after-ride a { display:grid; grid-template-columns:1fr 1fr; gap:clamp(1rem,4vw,4rem); align-items:center; padding:clamp(1.25rem,5vw,4rem); text-decoration:none; }
@@ -225,3 +226,49 @@ body { background: #e5ecd4; }
 .after-ride section { border: 0; }
 .after-ride a { max-width: 1320px; margin-inline: auto; }
 .scooter-photo img { aspect-ratio: 1.25; object-fit: cover; object-position: center 65%; }
+
+/* Single page itinerary: remove the site's old navigation chrome and travel vertically with the rider. */
+.site-header, .after-ride { display: none !important; }
+.departure { margin-bottom: 0; }
+.departure-collage { min-height: clamp(360px, 46vw, 590px); }
+.departure-photo { width: 72%; left: 14%; right: auto; }
+.scooter-photo { width: 43%; left: 1%; bottom: 2%; }
+.collage-campus { width: 25%; top: 2%; left: 0; }
+.collage-home { width: 26%; right: 0; bottom: 8%; }
+.collage-coast { width: 28%; right: 0; top: 34%; }
+.ride { height: auto; margin-inline: calc((100% - 100vw) / 2); }
+.ride-stage { position: relative; top: auto; min-height: 0; display: block; padding: clamp(1.2rem, 4vw, 3.5rem) max(4vw, calc((100vw - 1320px) / 2)); }
+.ride-top { margin-bottom: 1.5rem; }
+.vertical-route { display: grid; grid-template-columns: minmax(260px, .85fr) minmax(320px, 1fr); align-items: start; gap: clamp(1.2rem, 5vw, 5rem); }
+.route-map { position: sticky; top: 1.5rem; }
+.route-map svg { display: block; width: 100%; max-height: calc(100svh - 3rem); border: 2px solid #24362b; background: #a5c8c2; }
+.route-stories { position: relative; list-style: none; padding: 0 0 0 clamp(1.2rem, 3vw, 2.2rem); margin: 0; }
+.route-stories::before { content: ''; position: absolute; left: 0; top: 2rem; bottom: 2rem; width: 2px; background: #24362b55; }
+.route-stories li { min-height: 78svh; display: flex; align-items: center; scroll-margin: 18svh 0; }
+.chapter-select { width: 100%; display: grid; grid-template-columns: minmax(120px, .82fr) 1fr; gap: clamp(.7rem, 2vw, 1.4rem); align-items: center; text-align: left; padding: clamp(.7rem, 1.6vw, 1.2rem); border: 0; border-left: 5px solid transparent; background: transparent; color: #24362b; opacity: .66; transform: scale(.97); transition: opacity .25s ease, transform .25s ease, background .25s ease; }
+.is-active .chapter-select { opacity: 1; transform: scale(1); background: color-mix(in srgb, var(--chapter-color) 68%, white); border-left-color: #b84735; }
+.chapter-select img { width: 100%; height: clamp(150px, 23vw, 280px); object-fit: cover; }
+.chapter-select span { display: grid; gap: .35rem; }
+.chapter-select small { font: 650 .68rem/1.4 ui-monospace, monospace; letter-spacing: .07em; text-transform: uppercase; }
+.chapter-select strong { font: 800 clamp(1.55rem, 3.5vw, 3rem)/1 Georgia, serif; letter-spacing: -.05em; }
+.chapter-select em { max-width: 34ch; font-style: normal; font-size: clamp(.88rem, 1.25vw, 1.05rem); line-height: 1.5; }
+.simple-footer { margin-top: 0; }
+.pick-stop { display: inline-flex; align-items: center; gap: .5rem; padding: .65rem .85rem; border: 2px solid #24362b; background: #f7efdb; color: #24362b; font-weight: 800; box-shadow: 3px 3px #24362b; }
+.pick-stop select { max-width: min(52vw, 250px); padding: .1rem .2rem; border: 0; background: transparent; color: inherit; font: inherit; }
+.pick-stop select:focus-visible { outline-color: #a53528; }
+main { min-height: auto; }
+@media(max-width:760px) {
+  .departure { grid-template-columns: 1fr; }
+  .departure-collage { min-height: clamp(330px, 98vw, 500px); }
+  .departure-photo { width: 74%; left: 14%; }
+  .collage-extra { width: 28%; }
+  .collage-coast { top: 34%; right: 0; }
+  .vertical-route { grid-template-columns: 1fr; gap: 1rem; }
+  .route-map { position: sticky; top: .4rem; z-index: 2; width: min(100%, 340px); margin-inline: auto; }
+  .route-map svg { height: min(48svh, 430px); }
+  .route-stories { padding-left: 1rem; }
+  .route-stories li { min-height: 68svh; }
+  .chapter-select { grid-template-columns: minmax(100px, .75fr) 1fr; padding: .55rem; gap: .65rem; }
+  .chapter-select img { height: clamp(130px, 41vw, 210px); }
+}
+@media(prefers-reduced-motion:reduce) { .chapter-select { transition: none; } }
